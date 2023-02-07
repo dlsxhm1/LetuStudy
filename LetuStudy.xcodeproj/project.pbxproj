@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C97E51302992E11100B63510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E512F2992E11100B63510 /* AppDelegate.swift */; };
+		C97E51322992E11100B63510 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E51312992E11100B63510 /* ContentView.swift */; };
+		C97E51342992E11100B63510 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = C97E51332992E11100B63510 /* Experience.rcproject */; };
+		C97E51362992E11300B63510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97E51352992E11300B63510 /* Assets.xcassets */; };
+		C97E51392992E11300B63510 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97E51382992E11300B63510 /* Preview Assets.xcassets */; };
+		C97E51432992E11300B63510 /* LetuStudyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E51422992E11300B63510 /* LetuStudyTests.swift */; };
+		C97E514D2992E11300B63510 /* LetuStudyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E514C2992E11300B63510 /* LetuStudyUITests.swift */; };
+		C97E514F2992E11300B63510 /* LetuStudyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E514E2992E11300B63510 /* LetuStudyUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C97E513F2992E11300B63510 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C97E51242992E11100B63510 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C97E512B2992E11100B63510;
+			remoteInfo = LetuStudy;
+		};
+		C97E51492992E11300B63510 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C97E51242992E11100B63510 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C97E512B2992E11100B63510;
+			remoteInfo = LetuStudy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C97E512C2992E11100B63510 /* LetuStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetuStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C97E512F2992E11100B63510 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C97E51312992E11100B63510 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C97E51332992E11100B63510 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
+		C97E51352992E11300B63510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C97E51382992E11300B63510 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C97E513E2992E11300B63510 /* LetuStudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetuStudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C97E51422992E11300B63510 /* LetuStudyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetuStudyTests.swift; sourceTree = "<group>"; };
+		C97E51482992E11300B63510 /* LetuStudyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetuStudyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C97E514C2992E11300B63510 /* LetuStudyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetuStudyUITests.swift; sourceTree = "<group>"; };
+		C97E514E2992E11300B63510 /* LetuStudyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetuStudyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C97E51292992E11100B63510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97E513B2992E11300B63510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97E51452992E11300B63510 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C97E51232992E11100B63510 = {
+			isa = PBXGroup;
+			children = (
+				C97E512E2992E11100B63510 /* LetuStudy */,
+				C97E51412992E11300B63510 /* LetuStudyTests */,
+				C97E514B2992E11300B63510 /* LetuStudyUITests */,
+				C97E512D2992E11100B63510 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C97E512D2992E11100B63510 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C97E512C2992E11100B63510 /* LetuStudy.app */,
+				C97E513E2992E11300B63510 /* LetuStudyTests.xctest */,
+				C97E51482992E11300B63510 /* LetuStudyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C97E512E2992E11100B63510 /* LetuStudy */ = {
+			isa = PBXGroup;
+			children = (
+				C97E512F2992E11100B63510 /* AppDelegate.swift */,
+				C97E51312992E11100B63510 /* ContentView.swift */,
+				C97E51332992E11100B63510 /* Experience.rcproject */,
+				C97E51352992E11300B63510 /* Assets.xcassets */,
+				C97E51372992E11300B63510 /* Preview Content */,
+			);
+			path = LetuStudy;
+			sourceTree = "<group>";
+		};
+		C97E51372992E11300B63510 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C97E51382992E11300B63510 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C97E51412992E11300B63510 /* LetuStudyTests */ = {
+			isa = PBXGroup;
+			children = (
+				C97E51422992E11300B63510 /* LetuStudyTests.swift */,
+			);
+			path = LetuStudyTests;
+			sourceTree = "<group>";
+		};
+		C97E514B2992E11300B63510 /* LetuStudyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C97E514C2992E11300B63510 /* LetuStudyUITests.swift */,
+				C97E514E2992E11300B63510 /* LetuStudyUITestsLaunchTests.swift */,
+			);
+			path = LetuStudyUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C97E512B2992E11100B63510 /* LetuStudy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C97E51522992E11300B63510 /* Build configuration list for PBXNativeTarget "LetuStudy" */;
+			buildPhases = (
+				C97E51282992E11100B63510 /* Sources */,
+				C97E51292992E11100B63510 /* Frameworks */,
+				C97E512A2992E11100B63510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LetuStudy;
+			productName = LetuStudy;
+			productReference = C97E512C2992E11100B63510 /* LetuStudy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C97E513D2992E11300B63510 /* LetuStudyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C97E51552992E11300B63510 /* Build configuration list for PBXNativeTarget "LetuStudyTests" */;
+			buildPhases = (
+				C97E513A2992E11300B63510 /* Sources */,
+				C97E513B2992E11300B63510 /* Frameworks */,
+				C97E513C2992E11300B63510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C97E51402992E11300B63510 /* PBXTargetDependency */,
+			);
+			name = LetuStudyTests;
+			productName = LetuStudyTests;
+			productReference = C97E513E2992E11300B63510 /* LetuStudyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C97E51472992E11300B63510 /* LetuStudyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C97E51582992E11300B63510 /* Build configuration list for PBXNativeTarget "LetuStudyUITests" */;
+			buildPhases = (
+				C97E51442992E11300B63510 /* Sources */,
+				C97E51452992E11300B63510 /* Frameworks */,
+				C97E51462992E11300B63510 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C97E514A2992E11300B63510 /* PBXTargetDependency */,
+			);
+			name = LetuStudyUITests;
+			productName = LetuStudyUITests;
+			productReference = C97E51482992E11300B63510 /* LetuStudyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C97E51242992E11100B63510 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					C97E512B2992E11100B63510 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					C97E513D2992E11300B63510 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C97E512B2992E11100B63510;
+					};
+					C97E51472992E11300B63510 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C97E512B2992E11100B63510;
+					};
+				};
+			};
+			buildConfigurationList = C97E51272992E11100B63510 /* Build configuration list for PBXProject "LetuStudy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C97E51232992E11100B63510;
+			productRefGroup = C97E512D2992E11100B63510 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C97E512B2992E11100B63510 /* LetuStudy */,
+				C97E513D2992E11300B63510 /* LetuStudyTests */,
+				C97E51472992E11300B63510 /* LetuStudyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C97E512A2992E11100B63510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97E51392992E11300B63510 /* Preview Assets.xcassets in Resources */,
+				C97E51362992E11300B63510 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97E513C2992E11300B63510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97E51462992E11300B63510 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C97E51282992E11100B63510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97E51322992E11100B63510 /* ContentView.swift in Sources */,
+				C97E51302992E11100B63510 /* AppDelegate.swift in Sources */,
+				C97E51342992E11100B63510 /* Experience.rcproject in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97E513A2992E11300B63510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97E51432992E11300B63510 /* LetuStudyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97E51442992E11300B63510 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97E514F2992E11300B63510 /* LetuStudyUITestsLaunchTests.swift in Sources */,
+				C97E514D2992E11300B63510 /* LetuStudyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C97E51402992E11300B63510 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C97E512B2992E11100B63510 /* LetuStudy */;
+			targetProxy = C97E513F2992E11300B63510 /* PBXContainerItemProxy */;
+		};
+		C97E514A2992E11300B63510 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C97E512B2992E11100B63510 /* LetuStudy */;
+			targetProxy = C97E51492992E11300B63510 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C97E51502992E11300B63510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C97E51512992E11300B63510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C97E51532992E11300B63510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LetuStudy/Preview Content\"";
+				DEVELOPMENT_TEAM = 4ADG87VAVJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SoftEng.LetuStudy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C97E51542992E11300B63510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LetuStudy/Preview Content\"";
+				DEVELOPMENT_TEAM = 4ADG87VAVJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SoftEng.LetuStudy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C97E51562992E11300B63510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4ADG87VAVJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SoftEng.LetuStudyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetuStudy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LetuStudy";
+			};
+			name = Debug;
+		};
+		C97E51572992E11300B63510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4ADG87VAVJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SoftEng.LetuStudyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetuStudy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LetuStudy";
+			};
+			name = Release;
+		};
+		C97E51592992E11300B63510 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4ADG87VAVJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SoftEng.LetuStudyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LetuStudy;
+			};
+			name = Debug;
+		};
+		C97E515A2992E11300B63510 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4ADG87VAVJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SoftEng.LetuStudyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LetuStudy;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C97E51272992E11100B63510 /* Build configuration list for PBXProject "LetuStudy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C97E51502992E11300B63510 /* Debug */,
+				C97E51512992E11300B63510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C97E51522992E11300B63510 /* Build configuration list for PBXNativeTarget "LetuStudy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C97E51532992E11300B63510 /* Debug */,
+				C97E51542992E11300B63510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C97E51552992E11300B63510 /* Build configuration list for PBXNativeTarget "LetuStudyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C97E51562992E11300B63510 /* Debug */,
+				C97E51572992E11300B63510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C97E51582992E11300B63510 /* Build configuration list for PBXNativeTarget "LetuStudyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C97E51592992E11300B63510 /* Debug */,
+				C97E515A2992E11300B63510 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C97E51242992E11100B63510 /* Project object */;
+}
