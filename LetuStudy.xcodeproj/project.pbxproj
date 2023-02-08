@@ -19,6 +19,7 @@
 		C97E514D2992E11300B63510 /* LetuStudyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E514C2992E11300B63510 /* LetuStudyUITests.swift */; };
 		C97E514F2992E11300B63510 /* LetuStudyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E514E2992E11300B63510 /* LetuStudyUITestsLaunchTests.swift */; };
 		C9C2A27129938001009CA3FC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C2A27029938001009CA3FC /* HomeView.swift */; };
+		C9ED67DD2994085000E317D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9ED67DC2994085000E317D7 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		C97E514C2992E11300B63510 /* LetuStudyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetuStudyUITests.swift; sourceTree = "<group>"; };
 		C97E514E2992E11300B63510 /* LetuStudyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetuStudyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C9C2A27029938001009CA3FC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C9ED67DB2994060A00E317D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C9ED67DC2994085000E317D7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 		C97E512E2992E11100B63510 /* LetuStudy */ = {
 			isa = PBXGroup;
 			children = (
+				C9ED67DB2994060A00E317D7 /* Info.plist */,
+				C9ED67DC2994085000E317D7 /* LaunchScreen.storyboard */,
 				C97E512F2992E11100B63510 /* AppDelegate.swift */,
 				C9C2A27229938753009CA3FC /* Views */,
 				C97E51332992E11100B63510 /* Experience.rcproject */,
@@ -255,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9ED67DD2994085000E317D7 /* LaunchScreen.storyboard in Resources */,
 				C97E51392992E11300B63510 /* Preview Assets.xcassets in Resources */,
 				C97E51362992E11300B63510 /* Assets.xcassets in Resources */,
 			);
@@ -450,11 +456,12 @@
 				DEVELOPMENT_TEAM = 4V84WTWR56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LetuStudy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LetuStudy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -486,11 +493,12 @@
 				DEVELOPMENT_TEAM = 4V84WTWR56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LetuStudy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LetuStudy;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";

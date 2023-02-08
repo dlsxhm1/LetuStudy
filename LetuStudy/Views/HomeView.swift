@@ -23,7 +23,7 @@ struct HomeView: View {
             VStack(alignment: .center) {
                 Text("Welcome Back,")
                     .font(.title)
-                Text("Mark Spensor")
+                Text("Mark Spenser")
                     .font(.title)
 				Spacer()
 					.frame(height: 50.0)

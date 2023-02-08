@@ -43,7 +43,7 @@ struct SettingsView: View {
 					}
 					
 					Section(header: Text("Display settings")) {
-						Toggle(isOn: $soundToggle) {
+						Toggle(isOn: $darkModeToggle) {
 							Text("Dark Mode")
 						}
 						Text("Brightness Adjustment")
