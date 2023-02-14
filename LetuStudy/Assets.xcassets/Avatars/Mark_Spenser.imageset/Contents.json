@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Mark_Spencer@3x.jpeg",
+      "filename" : "Mark_Spencer@1x.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -11,7 +11,7 @@
       "scale" : "2x"
     },
     {
-      "filename" : "Mark_Spencer@1x.jpeg",
+      "filename" : "Mark_Spencer@3x.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }

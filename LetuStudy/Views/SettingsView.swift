@@ -26,34 +26,27 @@ struct SettingsView: View {
 	@State private var ttsToggle = false
 	
 	var body: some View {
-		NavigationView {
+		NavigationStack {
 			VStack{
-				Spacer()
-					.frame(height: 10)
-				Text("Settings")
-					.font(.title)
-					.fontWeight(.bold)
-					.multilineTextAlignment(.leading)
-					.padding(.trailing, 215.0)
 				Form {
 					Section(header: Text("Notifications settings")) {
 						Toggle(isOn: $notificationToggle) {
 							Text("Notification")
-						}
+						}.tint(Color("AccentColor"))
 					}
 					
 					Section(header: Text("Display settings")) {
 						Toggle(isOn: $darkModeToggle) {
 							Text("Dark Mode")
-						}
+						}.tint(Color("AccentColor"))
 						Text("Brightness Adjustment")
-						Slider(value: $brightnessValue, in: 0...100)
+						Slider(value: $brightnessValue, in: 0...100).tint(Color("AccentColor"))
 					}
 					
 					Section(header: Text("General settings")) {
 						Toggle(isOn: $soundToggle) {
 							Text("Sound")
-						}
+						}.tint(Color("AccentColor"))
 						
 						Picker(
 							selection: $selectedUserType,
@@ -68,22 +61,24 @@ struct SettingsView: View {
 					Section(header: Text("Accessibility Settings")) {
 						Toggle(isOn: $accessToggle) {
 							Text ("Accessibility Mode")
-						}
+						}.tint(Color("AccentColor"))
 						if accessToggle {
 							Section{
 								Toggle(isOn: $colorReverseToggle) {
 									Text("Reverse Color")
-								}
+								}.tint(Color("AccentColor"))
 								Toggle(isOn: $ttsToggle) {
 									Text("VoiceOver")
-								}
+								}.tint(Color("AccentColor"))
 							}
 						}
 					}
 				}
+				.navigationTitle("Settings")
 			}
-			.background(Color(red: 242/255, green: 242/255, blue: 247/255))
+			//.background(Color(.systemGroupedBackground))
 		}
+		.edgesIgnoringSafeArea(.bottom)
 	}
 }
 

@@ -8,31 +8,37 @@
 import SwiftUI
 
 struct CardsView: View {
+	
+	@State var flipped = false
+	
 	var body: some View {
-		VStack(){
-			Spacer()
-				.frame(height: 20)
-			Text("Study Cards")
-				.font(.largeTitle)
-				.multilineTextAlignment(.leading)
-				.padding(.trailing, 150.0)
-			Spacer()
-				.frame(height: 50)
-			ScrollView {
-				VStack(alignment: .center, spacing: 20) {
-					ForEach(1..<6) {
-						Text("Vocabulary \($0)")
-							.fontWeight(.bold)
-							.foregroundColor(Color(red: 31/255, green: 46/255, blue: 96/255))
-							.font(.largeTitle)
-							.frame(width: 300, height: 150)
-							.background(Color(red: 223/255, green: 183/255, blue: 87/255))
-							.cornerRadius(15)
+		NavigationStack {
+			VStack(){
+				ScrollView {
+					VStack(alignment: .center, spacing: 20) {
+						ForEach(1..<6) {
+							Text("Vocabulary \($0)")
+								.fontWeight(.bold)
+								.foregroundColor(Color("AccentColor"))
+								.font(.largeTitle)
+								.frame(width: 300, height: 150)
+								.background(Color("LaunchColor"))
+								.cornerRadius(15)
+								
+								//Flipping Effect
+								.rotation3DEffect(self.flipped ? Angle(degrees: 180): Angle(degrees: 0), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
+								.onTapGesture {
+									withAnimation {
+										self.flipped.toggle()
+									}
+								}
+						}
 					}
 				}
-				
+				.frame(maxWidth: UIScreen.main.bounds.width)
+				.navigationTitle("Study Cards")
+				.navigationBarTitleDisplayMode(.large)
 			}
-			
 		}
 	}
 }

@@ -19,7 +19,7 @@ struct HomeView: View {
                 .padding(0)
                 .clipShape(Circle())
             
-            //Title
+            //Main Title
             VStack(alignment: .center) {
                 Text("Welcome Back,")
                     .font(.title)
@@ -32,23 +32,19 @@ struct HomeView: View {
                         .font(.subheadline)
 						.padding()
 						.overlay(
-								RoundedRectangle(cornerRadius: 16)
-									.stroke(Color(red: 168/255, green: 170/255, blue: 175/255), lineWidth: 4)
-							)
+							RoundedRectangle(cornerRadius: 16)
+								.stroke(Color("OutlineColor"), lineWidth: 4)
+						)
                     Text("")
                         .font(.subheadline)
 				}
-				//.frame(width: 300.0, height: 350.0)
-				
 				Spacer()
             }
-			
             .padding()
             
             Spacer()
         }
         .frame(width: 350.0)
-        
     }
 }
 

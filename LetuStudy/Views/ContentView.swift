@@ -8,62 +8,65 @@
 import SwiftUI
 import RealityKit
 
-
-
 struct ContentView : View {
 	@State public var tabViewSelection = 0
-	@State var selection = 0
+	
+	//Detects if logged in
+	@State var currentUsername = ""
+	
+	//Defines bar size for sliding bar animation
 	private var singleTabWidth = UIScreen.main.bounds.width / 4
 	
 	init() {
-		UITabBar.appearance().backgroundColor = UIColor.white
+		//Change Tab Bar background color
+		//UITabBar.appearance().isTranslucent = true
+		//UITabBar.appearance().barTintColor = UIColor(named: "AccentColor")
 	}
 	
     var body: some View {
 		ZStack(alignment: .bottomLeading) {
+			//Tab Bar
 			TabView(selection: $tabViewSelection){
 				HomeView()
 					.tabItem {
-						if selection == 0 {
-							Image(systemName:"house")
-						} else {
-							Image(systemName:"house.fill")
-						}
+						Image(systemName:"house")
 						Text("Home")
 					}.tag(0)
+					.foregroundColor(Color("AccentColor"))
 				CardsView()
 					.tabItem {
-						if selection == 0 {
-							Image(systemName: "rectangle.and.paperclip")
-						} else {
-							Image(systemName: "rectangle.and.paperclip.fill")
-						}
+						Image(systemName: "rectangle.on.rectangle.angled")
 						Text("Study Cards")
 					}.tag(1)
+					.foregroundColor(Color("AccentColor"))
 				StatsView()
 					.tabItem {
 						Image(systemName: "chart.bar.xaxis")
 						Text("Statistics")
 					}.tag(2)
+					.foregroundColor(Color("AccentColor"))
 				SettingsView()
 					.tabItem {
 						Image(systemName: "gear")
 						Text("Settings")
 					}.tag(3)
+					.foregroundColor(Color("AccentColor"))
 			}
-
 			.padding(.bottom, 10.0)
+			.accentColor(Color("AccentColor"))
+			
+			//Sliding Animtion
 			Rectangle()
 				.offset(x: singleTabWidth * CGFloat(tabViewSelection))
 				.frame(width: singleTabWidth, height: 7)
-				.padding(.bottom, 0.0)
-				.animation(.default)
+				.padding(.bottom, 20.0)
+				.animation(.default, value: tabViewSelection)
+			
 		}
-		
+		.edgesIgnoringSafeArea(.bottom)
         //ARViewContainer().edgesIgnoringSafeArea(.all)
     }
 }
-
 
 
 struct ARViewContainer: UIViewRepresentable {

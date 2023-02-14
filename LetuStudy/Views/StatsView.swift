@@ -34,8 +34,10 @@ let currentWeek: [StudyCount] = [
 
 struct StatsView: View {
     var body: some View {
-		VStack {
-					GroupBox ( "Line Chart - Step count") {
+		NavigationStack {
+			ScrollView {
+				VStack {
+					GroupBox ( "Line Chart - Study Minutes") {
 						Chart(currentWeek) {
 							LineMark(
 								x: .value("Week Day", $0.weekday, unit: .day),
@@ -43,6 +45,7 @@ struct StatsView: View {
 							)
 						}
 					}
+					.frame(height: 200.0)
 					
 					GroupBox ( "Bar Chart - Study Minutes") {
 						Chart(currentWeek) {
@@ -52,6 +55,7 @@ struct StatsView: View {
 							)
 						}
 					}
+					.frame(height: 200.0)
 					
 					GroupBox ( "Point Chart - Study Minutes") {
 						Chart(currentWeek) {
@@ -61,6 +65,7 @@ struct StatsView: View {
 							)
 						}
 					}
+					.frame(height: 200.0)
 					
 					GroupBox ( "Rectangle Chart - Study Minutes") {
 						Chart(currentWeek) {
@@ -70,6 +75,7 @@ struct StatsView: View {
 							)
 						}
 					}
+					.frame(height: 200.0)
 					
 					GroupBox ( "Line Chart - Study Minutes") {
 						Chart(currentWeek) {
@@ -79,7 +85,12 @@ struct StatsView: View {
 							)
 						}
 					}
+					.frame(height: 200.0)
+					
 				}
+			}
+		}
+		.navigationTitle("Statistics")
     }
 }
 
