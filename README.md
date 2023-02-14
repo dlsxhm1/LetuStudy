@@ -20,6 +20,7 @@ A study app for Software Engineering I course. Providing Study cards, statistics
 | ----------------- | ------------------------------------------------------------------ |
 | Primary Color | ![#1f2e60](https://via.placeholder.com/10/1f2e60?text=+) #1f2e60 |
 | Secondary Color | ![#dfb757](https://via.placeholder.com/10/dfb757?text=+) #dfb757 |
+| Outline Color | ![#a8aaaf](https://via.placeholder.com/10/a8aaaf?text=+) #a8aaaf |
 
 
 ## Documentation
