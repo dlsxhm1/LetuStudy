@@ -18,11 +18,11 @@ A study app for Software Engineering I course. Providing Study cards, statistics
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
-| Secondary Color | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
+| Primary Color | ![#1f2e60](https://via.placeholder.com/10/1f2e60?text=+) #1f2e60 |
+| Secondary Color | ![#dfb757](https://via.placeholder.com/10/dfb757?text=+) #dfb757 |
 
 
 ## Documentation
 
-[Software Requirements Specification (SRS)](https://linktodocumentation)
+[Software Requirements Specification (SRS)](Documents/LetuStudy_SRS.pdf)
 
