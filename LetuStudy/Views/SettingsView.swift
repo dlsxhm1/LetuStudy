@@ -14,6 +14,8 @@ enum UserType: String, CaseIterable {
 }
 
 struct SettingsView: View {
+	@Environment(\.colorScheme) var colorScheme
+	
 	@State private var selectedUserType: UserType = .Student
 	@State private var notificationToggle = true
 	@State private var darkModeToggle = false

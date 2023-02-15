@@ -19,8 +19,9 @@ struct LoginView: View {
 	@State private var password: String = ""
 	@State private var showPassword: Bool = false
 	@State private var isAuthenticated: Bool = false
+	@State private var isPasswordWrong: Bool = false
 	
-	@FocusState private var nameIsFocused: Bool
+	//@FocusState private var nameIsFocused: Bool
 	
 	//Disable Sign-in button when Username or Password empty
 	var isSignInButtonDisabled: Bool {
@@ -45,11 +46,14 @@ struct LoginView: View {
 				  prompt: Text("Username").foregroundColor(.gray)
 			)
 			.autocapitalization(.none)
-			.focused($nameIsFocused)
+			.disableAutocorrection(true)
+			.textContentType(.username)
+			.keyboardType(.asciiCapable)
+			//.focused($nameIsFocused)
 			.padding(15)
 			.overlay {
 				RoundedRectangle(cornerRadius: 10)
-					.stroke(.black, lineWidth: 2)
+					.stroke(Color("LoginColor"), lineWidth: 2)
 			}
 			.padding(.horizontal)
 			
@@ -59,18 +63,28 @@ struct LoginView: View {
 					Group {
 						if showPassword {
 							TextField("Password",
-									  text: $password,
-									  prompt: Text("Password").foregroundColor(.gray))
+								  text: $password,
+								  prompt: Text("Password").foregroundColor(.gray))
+							//.focused(true)
+							.textContentType(.password)
+							.autocapitalization(.none)
+							.disableAutocorrection(true)
+							.keyboardType(.asciiCapable)
 						} else {
 							SecureField("Password",
-										text: $password,
-										prompt: Text("Password").foregroundColor(.gray))
+								text: $password,
+								prompt: Text("Password").foregroundColor(.gray))
+							//.focused(true)
+							.textContentType(.password)
+							.autocapitalization(.none)
+							.disableAutocorrection(true)
+							.keyboardType(.asciiCapable)
 						}
 					}
 					.padding(15)
 					.overlay {
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(.black, lineWidth: 2)
+							.stroke(Color("LoginColor"), lineWidth: 2)
 					}
 					
 					//Show or Hide password button
@@ -115,10 +129,11 @@ struct LoginView: View {
 			.disabled(isSignInButtonDisabled)
 			.shadow(color: Color.gray.opacity(0.5), radius: 2, x: 1, y: 1)
 			.padding()
+			.contentShape(RoundedRectangle(cornerRadius: 20))
 		}
-		.onTapGesture {
-			hideKeyboard()
-		}
+//		.onTapGesture {
+//			hideKeyboard()
+//		}
 		.fullScreenCover(isPresented: $isAuthenticated) {
 			ContentView()
 		}
