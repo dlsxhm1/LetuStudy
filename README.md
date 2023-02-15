@@ -1,7 +1,7 @@
 
 # LetuStudy
 
-A study app for Software Engineering I course. Providing Study cards, statistics and setting functions.
+A comperhensive study app designed in Software Engineering I course. Providing Study cards, calendar, statistics and other functions.
 
 
 ## Authors
