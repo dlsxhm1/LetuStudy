@@ -10,6 +10,8 @@ A comperhensive study app designed in Software Engineering I course. Providing S
 - Jordan Davault [@JDVault33](https://www.github.com/JDVault33)
 - Westmoreland Loki
 - Zol-Od Enkh-Od
+- Joseph-David Hernandez Spalding
+- Bayarbat Battseren [@BayarbatB](https://www.github.com/BayarbatB)
 
 ## License
 
