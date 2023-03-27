@@ -12,6 +12,7 @@ A comperhensive study app designed in Software Engineering I course. Providing S
 - Zol-Od Enkh-Od
 - Joseph-David Hernandez Spalding
 - Bayarbat Battseren [@BayarbatB](https://www.github.com/BayarbatB)
+- Richard Homan [@richardhoman99](https://www.github.com/richardhoman99)
 
 ## License
 
