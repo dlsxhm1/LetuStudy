@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 var words: [String] = [
 	"Abstract Data Types",
@@ -32,6 +33,12 @@ struct CardsView: View {
 	let width : CGFloat = 300
 	let height : CGFloat = 250
 	let durationAndDelay : CGFloat = 0.15
+	
+	var persistentStore: NSPersistentContainer =
+	{
+		let appDelegate = UIApplication.shared.delegate as! AppDelegate
+		return appDelegate.persistentContainer
+	}()
 	
 	func flipCard () {
 			isFlipped = !isFlipped
@@ -117,6 +124,22 @@ struct CardsView: View {
 			.navigationTitle("Study Cards")
 			.navigationBarTitleDisplayMode(.large)
 			
+		}
+		.onAppear()
+		{
+			let studySetFetchRequest = StudySet.fetchRequest()
+			var count = 0
+			persistentStore.viewContext.performAndWait {
+				do
+				{
+					count = try persistentStore.viewContext.count(for: studySetFetchRequest)
+				}
+				catch
+				{
+					print("Error counting objects: \(error)")
+				}
+			}
+			print("count of StudySets: \(count)")
 		}
 	}
 	

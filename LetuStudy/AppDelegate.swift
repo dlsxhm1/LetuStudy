@@ -37,7 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = UIHostingController(rootView: contentView)
         self.window = window
         window.makeKeyAndVisible()
-//		RunLoop.current.run(until: NSDate(timeIntervalSinceNow:1) as Date)
+		
+		// add data set and point
+		let studySetDescription = NSEntityDescription()
+		studySetDescription.managedObjectClassName = "StudySet"
+		studySetDescription.name = "StudySet"
+		let set = StudySet(context: persistentContainer.viewContext)
+		set.name = "Test Set"
+		set.dateLastUsed = Date()
+		
         return true
     }
 
