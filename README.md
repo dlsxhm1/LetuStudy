@@ -28,6 +28,5 @@ A comperhensive study app designed in Software Engineering I course. Providing S
 
 ## Documentation
 
-[Software Requirements Specification (SRS)](Documents/LetuStudy_SRS.pdf)
-[System Design Document (SDD)](Documents/LetuStudy_SDD.pdf)
-
+[Software Requirements Specification (SRS)](Documents/LetuStudy_SRS.pdf)  
+[System Design Document (SDD)](Documents/LetuStudy_SDD.pdf)  
