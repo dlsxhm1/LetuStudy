@@ -8,31 +8,42 @@
 import SwiftUI
 import CoreData
 
-var words: [String] = [
-	"Abstract Data Types",
-	"Binary Tree",
-	"Ancestor"
-   ]
-
-var definition: [String] = [
-	"A data type that is defined by its behavior and operations, rather than its implementation",
-	"A tree in which every node has at most two children and one node has no parent.",
-	"A node on the path above a particular node to the root."
-]
-
-
-//var showDefinition = false
-
-struct CardsView: View {
+struct Point
+{
+	public var term: String
+	public var description: String
 	
-	@State var backDegree = 0.0
-	@State var frontDegree = -90.0
-	@State var isFlipped = false
-	@State var currentIndex = 0
+	init(term: String, description: String)
+	{
+		self.term = term
+		self.description = description
+	}
+}
+
+struct CardsView: View
+{
+	@ObservedObject private var keyboardManager = KeyboardManager()
 	
-	let width : CGFloat = 300
-	let height : CGFloat = 250
-	let durationAndDelay : CGFloat = 0.15
+	enum Focusable: Hashable
+	{
+		case none
+		case add
+		case row(id: String)
+	}
+	@FocusState var focusedPoint: Focusable?
+	
+	@State private var frontAngle = 0.0
+	@State private var backAngle = 90.0
+	@State private var isFlipped = false
+	@State private var studyingIndex = 0
+	
+	@State private var isEditing = false
+	
+	@State private var points: [Point] = []
+	
+	private let cardWidth : CGFloat = 300
+	private let cardHeight : CGFloat = 250
+	private let cardAnimationDuration : CGFloat = 0.15
 	
 	var persistentStore: NSPersistentContainer =
 	{
@@ -40,106 +51,215 @@ struct CardsView: View {
 		return appDelegate.persistentContainer
 	}()
 	
-	func flipCard () {
-			isFlipped = !isFlipped
-			if isFlipped {
-				withAnimation(.linear(duration: durationAndDelay)) {
-					backDegree = 90
-				}
-				withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-					frontDegree = 0
-				}
-			} else {
-				withAnimation(.linear(duration: durationAndDelay)) {
-					frontDegree = -90
-				}
-				withAnimation(.linear(duration: durationAndDelay).delay(durationAndDelay)){
-					backDegree = 0
-				}
+	func flipCard()
+	{
+		isFlipped = !isFlipped
+		if isFlipped
+		{
+			withAnimation(.linear(duration: cardAnimationDuration))
+			{
+				frontAngle = -90.0
+			}
+			withAnimation(.linear(duration: cardAnimationDuration).delay(cardAnimationDuration))
+			{
+				backAngle = 0.0
 			}
 		}
-	
-	var body: some View {
-		NavigationStack {
-			VStack(alignment: .center, spacing: 20){
-				Spacer()
-				ZStack(){
-					CardFront(width: width, height: height, degree: $frontDegree, currentIndex: $currentIndex)
-					CardBack(width: width, height: height, degree: $backDegree, currentIndex: $currentIndex)
-				}
-				.onTapGesture {
-					flipCard ()
-				}
-				HStack(){
-					Spacer()
-					Button("Previous") {
-						if currentIndex > 0 {
-							currentIndex -= 1
-						}
-						//Reset view to front (Word)
-						isFlipped = false
-					}
-					.font(.system(size: 24))
-					.disabled(currentIndex == 0)
-//					.foregroundColor(isEnabled ? Color("LaunchColor") : .gray)
-					
-					Spacer()
-					
-					Button("Next") {
-						if currentIndex < words.count - 1 {
-							currentIndex += 1
-						}
-						//Reset view to front (Word)
-						isFlipped = false
-					}
-					//.buttonStyle(.bordered)
-					.font(.system(size: 24))
-					.padding()
-					//.background(Color("AccentColor"))
-					//.foregroundColor(Color("LaunchColor"))
-					//.cornerRadius(15)
-					.disabled(currentIndex == words.count - 1)
-					Spacer()
-				}
-				.padding()
-				
-//				Text("Show \(showDefinition ? "Word" : "Definition")")
-//					.fontWeight(.bold)
-//					.foregroundColor(Color("AccentColor"))
-//					.font(.largeTitle)
-//					.frame(width: 300, height: 150)
-//					.background(Color("LaunchColor"))
-//					.cornerRadius(15)
-				
-				//Flipping Effect
-//					.rotation3DEffect(self.flipped ? Angle(degrees: 180): Angle(degrees: 0), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0)))
-//					.onTapGesture {
-//						withAnimation {
-//							self.flipped.toggle()
-//						}
-//					}
+		else
+		{
+			withAnimation(.linear(duration: cardAnimationDuration))
+			{
+				backAngle = 90.0
 			}
-			Spacer()
+			withAnimation(.linear(duration: cardAnimationDuration).delay(cardAnimationDuration))
+			{
+				frontAngle = 0.0
+			}
+		}
+	}
+	
+	var body: some View
+	{
+		NavigationStack
+		{
+			VStack(alignment: .center, spacing: 20)
+			{
+				if (!isEditing)
+				{
+					if (points.count <= 0)
+					{
+						Text("Select \"Edit\" to add terms")
+							.onAppear
+						{
+							isEditing = true
+						}
+					}
+					else
+					{
+						ZStack()
+						{
+							// front card
+							Card(width: cardWidth, height: cardHeight, rotationAngle: $frontAngle, textContent: $points[studyingIndex].term)
+							// back card
+							Card(width: cardWidth, height: cardHeight, rotationAngle: $backAngle, textContent: $points[studyingIndex].description)
+						}
+						.onTapGesture
+						{
+							flipCard ()
+						}
+						HStack(){
+							Spacer()
+							Button("Previous")
+							{
+								if studyingIndex > 0
+								{
+									studyingIndex -= 1
+								}
+								//Reset view to front (Word)
+	//							isFlipped = false
+							}
+								.font(.system(size: 24))
+								.disabled(studyingIndex <= 0)
+							Spacer()
+							Button("Next")
+							{
+								if studyingIndex < points.count - 1
+								{
+									studyingIndex += 1
+								}
+								//Reset view to front (Word)
+	//							isFlipped = false
+							}
+								.font(.system(size: 24))
+								.padding()
+								.disabled(studyingIndex >= points.count - 1)
+							Spacer()
+						}
+						.padding()
+					}
+				}
+				else
+				{
+					List()
+					{
+						ForEach(0..<points.count, id: \.self)
+						{
+							index in
+							
+							HStack()
+							{
+								Text("\(index+1)")
+									.padding(.trailing)
+								VStack(alignment: .leading)
+								{
+									TextField("Term", text: self.$points[index].term)
+										.focused($focusedPoint, equals: .row(id: UUID().uuidString))
+										.submitLabel(.done)
+									Divider()
+									TextField("Definition", text: self.$points[index].description)
+										.focused($focusedPoint, equals: .row(id: UUID().uuidString))
+										.submitLabel(.done)
+								}
+							}
+						}
+						.onDelete
+						{
+							indexSet in
+							self.points.remove(atOffsets: indexSet)
+						}
+						
+						Button(action:
+						{
+							self.focusedPoint = .add
+							withAnimation {
+								self.points.append(Point(term: "", description: ""))
+							}
+						} ,label:
+						{
+							HStack()
+							{
+								ZStack {
+									Image(systemName: "circle.fill")
+										.foregroundColor(.white)
+										.padding(.leading, 0)
+										.font(.system(size: 18))
+									Image(systemName: "plus.circle.fill")
+										.foregroundColor(.green)
+										.padding(.leading, 0)
+										.font(.system(size: 18))
+								}
+								
+								Text("Add")
+									.padding(.leading, 8.0)
+							}
+						})
+						.focused($focusedPoint, equals: .add)
+					}
+				}
+			}
 			.frame(maxWidth: UIScreen.main.bounds.width)
 			.navigationTitle("Study Cards")
 			.navigationBarTitleDisplayMode(.large)
+			.toolbar
+			{
+				ToolbarItem(placement: .navigationBarTrailing)
+				{
+					Button(action:
+					{
+						guard !keyboardManager.isVisible else
+						{
+							focusedPoint = nil
+							return
+						}
+						withAnimation
+						{
+							self.isEditing = !isEditing
+						}
+					})
+					{
+						if (isEditing)
+						{
+							Text("Done")
+								.bold()
+						}
+						else
+						{
+							Text("Edit")
+						}
+					}
+					.transaction
+					{ t in
+						t.animation = .none
+					}
+					.disabled(!keyboardManager.isVisible && points.count <= 0)
+				}
+			}
 			
 		}
 		.onAppear()
 		{
 			let studySetFetchRequest = StudySet.fetchRequest()
-			var count = 0
+			var fetchResult: [StudySet]?
+			
 			persistentStore.viewContext.performAndWait {
 				do
 				{
-					count = try persistentStore.viewContext.count(for: studySetFetchRequest)
+					fetchResult = try persistentStore.viewContext.fetch(studySetFetchRequest)
 				}
 				catch
 				{
 					print("Error counting objects: \(error)")
 				}
 			}
-			print("count of StudySets: \(count)")
+			
+			guard fetchResult != nil && fetchResult!.count > 0 else
+			{
+				print("Could not fetch results")
+				return
+			}
+			
+			let firstSet = fetchResult![0]
+			print("name: \(firstSet.name) lastOpened: \(firstSet.lastOpened)")
 		}
 	}
 	
@@ -156,61 +276,37 @@ struct CardsView: View {
 	}
 }
 
-struct AddView: View{
-	var body: some View {
-		Text("Adding")
-	}
-}
-
-struct CardFront : View {
-	let width : CGFloat
-	let height : CGFloat
-	@Binding var degree : Double
-	@Binding var currentIndex : Int
+struct Card : View
+{
+	public let width : CGFloat
+	public let height : CGFloat
 	
-	var body: some View {
-		ZStack {
+	@Binding public var rotationAngle : Double
+	@Binding public var textContent : String
+	
+	var body: some View
+	{
+		ZStack
+		{
 			RoundedRectangle(cornerRadius: 12)
 				.fill(Color("LaunchColor"))
 				.frame(width: width, height: height)
 				.padding()
-			Text(definition[currentIndex])
+			Text(textContent)
 				.font(.system(size: 32))
 				.foregroundColor(Color("AccentColor"))
 				.frame(width: width-10, height: height-30)
 				.scaledToFill()
 				.minimumScaleFactor(0.1)
 				.padding()
-		}.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+		}.rotation3DEffect(Angle(degrees: rotationAngle), axis: (x: 0, y: 1, z: 0))
 	}
 }
 
-struct CardBack : View {
-	let width : CGFloat
-	let height : CGFloat
-	@Binding var degree : Double
-	@Binding var currentIndex : Int
-	
-	var body: some View {
-		ZStack {
-			RoundedRectangle(cornerRadius: 12)
-				.fill(Color("LaunchColor"))
-				.frame(width: width, height: height)
-				.padding()
-			Text(words[currentIndex])
-				.font(.system(size: 40))
-				.foregroundColor(Color("AccentColor"))
-				.frame(width: width-10, height: height-30)
-				.scaledToFill()
-				.minimumScaleFactor(0.1)
-				.padding()
-				.lineLimit(2)
-		}.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
-	}
-}
-
-struct CardsView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardsView()
+struct CardsView_Previews: PreviewProvider
+{
+    static var previews: some View
+	{
+		CardsView()
     }
 }

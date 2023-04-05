@@ -16,6 +16,7 @@
 		48573CC329DE1D180062E6E4 /* AppStat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48573CBA29DE1D170062E6E4 /* AppStat+CoreDataProperties.swift */; };
 		48573CC429DE1D180062E6E4 /* StudyPoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48573CBB29DE1D170062E6E4 /* StudyPoint+CoreDataProperties.swift */; };
 		48573CC529DE1D180062E6E4 /* AppStat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48573CBC29DE1D170062E6E4 /* AppStat+CoreDataClass.swift */; };
+		48573CC729DE1DE40062E6E4 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48573CC629DE1DE40062E6E4 /* KeyboardManager.swift */; };
 		C95C7A5E29938C050062F211 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C7A5D29938C050062F211 /* SettingsView.swift */; };
 		C95C7A6029938C4D0062F211 /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C7A5F29938C4D0062F211 /* CardsView.swift */; };
 		C95C7A622993B7340062F211 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C7A612993B7340062F211 /* StatsView.swift */; };
@@ -59,6 +60,7 @@
 		48573CBA29DE1D170062E6E4 /* AppStat+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppStat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48573CBB29DE1D170062E6E4 /* StudyPoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StudyPoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48573CBC29DE1D170062E6E4 /* AppStat+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppStat+CoreDataClass.swift"; sourceTree = "<group>"; };
+		48573CC629DE1DE40062E6E4 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		C95C7A5D29938C050062F211 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C95C7A5F29938C4D0062F211 /* CardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
 		C95C7A612993B7340062F211 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
@@ -146,9 +148,10 @@
 			children = (
 				C9ED67DB2994060A00E317D7 /* Info.plist */,
 				C97E512F2992E11100B63510 /* AppDelegate.swift */,
+				48573CC629DE1DE40062E6E4 /* KeyboardManager.swift */,
 				C9C2A27229938753009CA3FC /* Views */,
-				C97E51332992E11100B63510 /* Experience.rcproject */,
 				48573CB229DE1D170062E6E4 /* Data */,
+				C97E51332992E11100B63510 /* Experience.rcproject */,
 				C97E51352992E11300B63510 /* Assets.xcassets */,
 				C97E51372992E11300B63510 /* Preview Content */,
 			);
@@ -333,6 +336,7 @@
 				C95C7A5E29938C050062F211 /* SettingsView.swift in Sources */,
 				C97E51322992E11100B63510 /* ContentView.swift in Sources */,
 				C97E51302992E11100B63510 /* AppDelegate.swift in Sources */,
+				48573CC729DE1DE40062E6E4 /* KeyboardManager.swift in Sources */,
 				C9C2A27129938001009CA3FC /* HomeView.swift in Sources */,
 				48573CBF29DE1D180062E6E4 /* StudyPoint+CoreDataClass.swift in Sources */,
 				C95C7A622993B7340062F211 /* StatsView.swift in Sources */,
