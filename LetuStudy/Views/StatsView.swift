@@ -82,7 +82,7 @@ struct StatsView: View
 					.frame(height: 200.0)
 					.onAppear()
 					{
-						await fetchTotalMinutes()
+//						await fetchTotalMinutes()
 					}
 					
 //					GroupBox ( "Bar Chart - Study Minutes") {
@@ -132,43 +132,43 @@ struct StatsView: View
 		
     }
 	
-	func fetchTotalMinutes() async
-	{
-		if (self.totalMinutes.count != 7)
-		{
-			self.totalMinutes.removeAll(keepingCapacity: true)
-		}
-		
-		let appStatFetchRequest = AppStat.fetchRequest()
-		var fetchResult: [AppStat]?
-		
-		persistentStore.viewContext.performAndWait
-		{
-			do
-			{
-				fetchResult = try persistentStore.viewContext.fetch(appStatFetchRequest)
-			}
-			catch
-			{
-				print("Error fetching 'AppStat': \(error)")
-			}
-		}
-		
-		guard fetchResult != nil && fetchResult!.count > 0 else
-		{
-			print("Error fetching 'AppStat'")
-			return
-		}
-		
-		let dayStats = fetchResult?.first?.stats
-		
-		for i in 0...6
-		{
-			let day = self.weekDates[i]
-			
-			self.totalMinutes.append(StudyCount(day: day, studyMinutes: 37))
-		}
-	}
+//	func fetchTotalMinutes() async
+//	{
+//		if (self.totalMinutes.count != 7)
+//		{
+//			self.totalMinutes.removeAll(keepingCapacity: true)
+//		}
+//		
+//		let appStatFetchRequest = AppStat.fetchRequest()
+//		var fetchResult: [AppStat]?
+//		
+//		persistentStore.viewContext.performAndWait
+//		{
+//			do
+//			{
+//				fetchResult = try persistentStore.viewContext.fetch(appStatFetchRequest)
+//			}
+//			catch
+//			{
+//				print("Error fetching 'AppStat': \(error)")
+//			}
+//		}
+//		
+//		guard fetchResult != nil && fetchResult!.count > 0 else
+//		{
+//			print("Error fetching 'AppStat'")
+//			return
+//		}
+//		
+//		let dayStats = fetchResult?.first?.stats
+//		
+//		for i in 0...6
+//		{
+//			let day = self.weekDates[i]
+//			
+//			self.totalMinutes.append(StudyCount(day: day, studyMinutes: 37))
+//		}
+//	}
 }
 
 struct StatsView_Previews: PreviewProvider

@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		studySetDescription.name = "StudySet"
 		let set = StudySet(context: persistentContainer.viewContext)
 		set.name = "Test Set"
-		set.dateLastUsed = Date()
+		set.lastOpened = Date()
 		
         return true
     }
