@@ -17,7 +17,8 @@ struct StudyCount: Identifiable
 	
 	init(day: Date, studyMinutes: Int)
 	{
-		self.weekday = day
+		let cal = NSCalendar.current
+		self.weekday = cal.startOfDay(for: day)
 		self.studyMinutes = studyMinutes
 	}
 }
@@ -34,25 +35,7 @@ struct StudyCount: Identifiable
 
 
 struct StatsView: View
-{
-	let weekDates: [Date] =
-	{
-		var buildWeekDates = [Date]()
-		
-		let cal = NSCalendar.current
-		var date = cal.startOfDay(for:Date())
-		
-		for i in 1...7
-		{
-			// get day
-			buildWeekDates.append(date)
-			// move back by 1 day
-			date = cal.date(byAdding: .day, value: -1, to: date) ?? Date()
-		}
-		
-		return buildWeekDates
-	}()
-	
+{	
 	@State var totalMinutes = [StudyCount]()
 	
 	var persistentStore: NSPersistentContainer =
@@ -69,7 +52,7 @@ struct StatsView: View
 			{
 				VStack
 				{
-					GroupBox ( "Total Study Minutes")
+					GroupBox ("Total Studying")
 					{
 						Chart(self.totalMinutes)
 						{
@@ -82,7 +65,10 @@ struct StatsView: View
 					.frame(height: 200.0)
 					.onAppear()
 					{
-//						await fetchTotalMinutes()
+						Task
+						{
+							await fetchTotalMinutes()
+						}
 					}
 					
 //					GroupBox ( "Bar Chart - Study Minutes") {
@@ -132,43 +118,16 @@ struct StatsView: View
 		
     }
 	
-//	func fetchTotalMinutes() async
-//	{
-//		if (self.totalMinutes.count != 7)
-//		{
-//			self.totalMinutes.removeAll(keepingCapacity: true)
-//		}
-//		
-//		let appStatFetchRequest = AppStat.fetchRequest()
-//		var fetchResult: [AppStat]?
-//		
-//		persistentStore.viewContext.performAndWait
-//		{
-//			do
-//			{
-//				fetchResult = try persistentStore.viewContext.fetch(appStatFetchRequest)
-//			}
-//			catch
-//			{
-//				print("Error fetching 'AppStat': \(error)")
-//			}
-//		}
-//		
-//		guard fetchResult != nil && fetchResult!.count > 0 else
-//		{
-//			print("Error fetching 'AppStat'")
-//			return
-//		}
-//		
-//		let dayStats = fetchResult?.first?.stats
-//		
-//		for i in 0...6
-//		{
-//			let day = self.weekDates[i]
-//			
-//			self.totalMinutes.append(StudyCount(day: day, studyMinutes: 37))
-//		}
-//	}
+	func fetchTotalMinutes() async
+	{
+		let sortedStats = await (UIApplication.shared.delegate as! AppDelegate).appStats()
+		totalMinutes = [StudyCount]()
+		for stat in sortedStats
+		{
+			let studyCount = StudyCount(day: stat.day, studyMinutes: Int(stat.minutes))
+			totalMinutes.append(studyCount)
+		}
+	}
 }
 
 struct StatsView_Previews: PreviewProvider
