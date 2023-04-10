@@ -2,7 +2,7 @@
 //  StudySet+CoreDataProperties.swift
 //  LetuStudy
 //
-//  Created by Richard Homan on 3/29/23.
+//  Created by Richard Homan on 3/30/23.
 //
 //
 
@@ -10,21 +10,22 @@ import Foundation
 import CoreData
 
 
-extension StudySet {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<StudySet> {
+extension StudySet
+{
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<StudySet>
+	{
         return NSFetchRequest<StudySet>(entityName: "StudySet")
     }
 
-    @NSManaged public var dateLastUsed: Date
+    @NSManaged public var lastOpened: Date
     @NSManaged public var name: String
-    @NSManaged public var points: NSOrderedSet?
-
+    @NSManaged public var points: NSOrderedSet
+    @NSManaged public var stats: NSSet
 }
 
 // MARK: Generated accessors for points
-extension StudySet {
-
+extension StudySet
+{
     @objc(insertObject:inPointsAtIndex:)
     @NSManaged public func insertIntoPoints(_ value: StudyPoint, at idx: Int)
 
@@ -54,9 +55,25 @@ extension StudySet {
 
     @objc(removePoints:)
     @NSManaged public func removeFromPoints(_ values: NSOrderedSet)
-
 }
 
-extension StudySet : Identifiable {
+// MARK: Generated accessors for stats
+extension StudySet
+{
+    @objc(addStatsObject:)
+    @NSManaged public func addToStats(_ value: DayStat)
+
+    @objc(removeStatsObject:)
+    @NSManaged public func removeFromStats(_ value: DayStat)
+
+    @objc(addStats:)
+    @NSManaged public func addToStats(_ values: NSSet)
+
+    @objc(removeStats:)
+    @NSManaged public func removeFromStats(_ values: NSSet)
+}
+
+extension StudySet : Identifiable
+{
 
 }
