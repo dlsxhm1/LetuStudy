@@ -17,9 +17,15 @@
 "Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "Dernier ensemble d'étude : Vocabulaire 1\n\nDernière ouverture : 02/15/2023 09:32";
 
 //CardsView.swift
-"Adding" = "Ajout";
+"Add" = "Ajout";
 "Next" = "Suivant";
 "Previous" = "Précédent";
+
+"Term" = "Terme";
+"Definition" = "Définition";
+"Done" = "Terminé";
+"Edit" = "Modifier";
+"Total Studying" = "Total d'études";
 
 //SettingsView.swift
 "Notifications settings" = "Réglages de Notifications";
@@ -44,3 +50,6 @@
 "Username" = "Nom d'Utilisateur";
 "Password" = "Mot de Passe";
 "Sign In" = "Se Connecter";
+
+"Add" = "Add";
+

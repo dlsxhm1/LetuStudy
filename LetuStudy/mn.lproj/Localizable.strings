@@ -17,9 +17,15 @@
 "Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "Сүүлд сурсан сэт:             Шинэ үг 1\n\nСүүлд ашигласан:       02/15/2023 09:32";
 
 //CardsView.swift
-"Adding" = "Нэмэх";
+"Add" = "Нэмэх";
 "Next" = "Дараачийн";
 "Previous" = "өмнөх";
+
+"Term" = "үг";
+"Definition" = "Тодорхойлолт";
+"Done" = "Дууслаа";
+"Edit" = "Засварлах";
+"Total Studying" = "Нийт суралцах хугацаа";
 
 //SettingsView.swift
 "Notifications settings" = "Мэдээлэл тохиргоо";

@@ -17,9 +17,15 @@
 "Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "Ultimo set di studio: Vocabolario 1\n\nUltima apertura: 02/15/2023 09:32";
 
 //CardsView.swift
-"Adding" = "Aggiunta";
+"Add" = "Aggiunta";
 "Next" = "Successivo";
 "Previous" = "Precedente";
+
+"Term" = "Termine";
+"Definition" = "Definizione";
+"Done" = "Fatto";
+"Edit" = "Modifica";
+"Total Studying" = "Studio totale";
 
 //SettingsView.swift
 "Notifications settings" = "Impostazioni di Notifica";

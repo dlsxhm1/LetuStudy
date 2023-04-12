@@ -17,9 +17,15 @@
 "Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "最近學習卡片：        詞彙 1\n\n最後開啟：   02/15/2023";
 
 //CardsView.swift
-"Adding" = "新增";
+"Add" = "新增";
 "Next" = "下一個";
 "Previous" = "上一個";
+
+"Term" = "詞語";
+"Definition" = "定義";
+"Done" = "完成";
+"Edit" = "編輯";
+"Total Studying" = "總學習時間";
 
 //SettingsView.swift
 "Notifications settings" = "通知設定";

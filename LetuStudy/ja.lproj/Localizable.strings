@@ -17,9 +17,15 @@
 "Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "最後の学習セット： 単語 1\n\n最終オープン： 02/15/2023 09:32";
 
 //CardsView.swift
-"Adding" = "追加";
+"Add" = "追加";
 "Next" = "次へ";
 "Previous" = "前へ";
+
+"Term" = "用語";
+"Definition" = "定義";
+"Done" = "完了";
+"Edit" = "編集";
+"Total Studying" = "勉強時間合計";
 
 //SettingsView.swift
 "Notifications settings" = "通知の設定";

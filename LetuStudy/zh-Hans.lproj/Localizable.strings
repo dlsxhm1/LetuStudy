@@ -17,9 +17,15 @@
 "Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "最后学习卡片：        单词 1\n\n最后打开时间：02/15/2023";
 
 //CardsView.swift
-"Adding" = "添加";
+"Add" = "添加";
 "Next" = "下一个";
 "Previous" = "上一个";
+
+"Term" = "词条";
+"Definition" = "定义";
+"Done" = "完成";
+"Edit" = "编辑";
+"Total Studying" = "总学习时长";
 
 //SettingsView.swift
 "Notifications settings" = "通知设置";
@@ -44,10 +50,3 @@
 "Username" = "用户名";
 "Password" = "密码";
 "Sign In" = "登录";
-
-"Add" = "添加";
-"Term" = "词条";
-"Definition" = "定义";
-"Done" = "完成";
-"Edit" = "编辑";
-"Total Studying" = "总学习时长";

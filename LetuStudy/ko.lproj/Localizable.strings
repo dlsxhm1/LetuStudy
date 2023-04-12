@@ -17,9 +17,15 @@
 "Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "마지막 학습 세트: 어휘 1\n\n마지막으로 열린 시간: 02/15/2023 09:32";
 
 //CardsView.swift
-"Adding" = "추가";
+"Add" = "추가";
 "Next" = "다음";
 "Previous" = "이전";
+
+"Term" = "용어";
+"Definition" = "정의";
+"Done" = "완료";
+"Edit" = "편집";
+"Total Studying" = "총 공부 시간";
 
 //SettingsView.swift
 "Notifications settings" = "알림 설정";
