@@ -7,10 +7,14 @@
 
 import SwiftUI
 
-enum UserType: String, CaseIterable {
+enum UserType: LocalizedStringKey, CaseIterable {
 	case Student
 	case Instructor
 	case Other
+	
+	var localized: LocalizedStringKey {
+		return rawValue
+	}
 }
 
 struct SettingsView: View {
@@ -52,7 +56,7 @@ struct SettingsView: View {
 						
 						Picker(
 							selection: $selectedUserType,
-							label: Text("Select your role")
+							label: Text("User Role")
 						) {
 							ForEach(UserType.allCases, id: \.self) {
 								Text($0.rawValue).tag($0)

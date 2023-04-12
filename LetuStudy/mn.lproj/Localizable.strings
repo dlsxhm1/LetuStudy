@@ -1,0 +1,46 @@
+/*
+  Localizable.strings
+  LetuStudy
+
+  Created by Haoming Xu on 4/5/23.
+  
+*/
+
+//ContentView.swift
+"Home" = "Үндсэн Цэс";
+"Study Cards" = "Суралцах Цэс";
+"Statistics" = "Статистик";
+"Settings" = "Тохиргоо";
+
+//HomeView.swift
+"Welcome Back," = "Тавтай Морил,";
+"Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "Сүүлд сурсан сэт:             Шинэ үг 1\n\nСүүлд ашигласан:       02/15/2023 09:32";
+
+//CardsView.swift
+"Adding" = "Нэмэх";
+"Next" = "Дараачийн";
+"Previous" = "өмнөх";
+
+//SettingsView.swift
+"Notifications settings" = "Мэдээлэл тохиргоо";
+"Notification" = "Мэдээлэл";
+"Display settings" = "Дэлгэцийн тохиргоо";
+"Dark Mode" = "Харанхуй Дэлгэц";
+"Brightness Adjustment" = "Гэрэлний сонголт";
+"General settings" = "Үндсэн тохиргоо";
+"Sound" = "Дуу";
+"User Role" = "Хэрэглэгчийн үүрэг";
+
+"Student" = "Оюутан";
+"Instructor" = "Багш";
+"Other" = "Бусад";
+
+"Accessibility Settings" = "Хандалтын тохиргоо ";
+"Accessibility Mode" = "Хандалтын хувилбар";
+"Reverse Color" = "Урвуу өнгө";
+"VoiceOver" = "ДууОруулга";
+
+//LoginView.swift
+"Name" = "Нэр";
+"Password" = "Нууц Үг";
+"Sign In" = "Нэвтрэх";

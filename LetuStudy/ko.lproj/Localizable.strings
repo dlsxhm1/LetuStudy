@@ -1,0 +1,46 @@
+/*
+  Localizable.strings
+  LetuStudy
+
+  Created by Haoming Xu on 4/5/23.
+  
+*/
+
+//ContentView.swift
+"home" = "홈";
+"Study Cards" = "학습 카드";
+"Statistics" = "통계";
+"Settings" = "설정";
+
+//HomeView.swift
+"Welcome Back," = "다시 돌아와서 반갑습니다,";
+"Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "마지막 학습 세트: 어휘 1\n\n마지막으로 열린 시간: 02/15/2023 09:32";
+
+//CardsView.swift
+"Adding" = "추가";
+"Next" = "다음";
+"Previous" = "이전";
+
+//SettingsView.swift
+"Notifications settings" = "알림 설정";
+"Notification" = "알림";
+"Display settings" = "디스플레이 설정";
+"Dark Mode" = "다크 모드";
+"Brightness Adjustment" = "밝기 조절";
+"General settings" = "일반 설정";
+"Sound" = "소리";
+"User Role" = "사용자 역할";
+
+"Student" = "학생";
+"Instructor" = "강사";
+"Other" = "기타";
+
+"Accessibility Settings" = "접근성 설정";
+"Accessibility Mode" = "접근성 모드";
+"Reverse Color" = "색상 반전";
+"VoiceOver" = "보이스오버";
+
+//LoginView.swift
+"Username" = "사용자 이름";
+"Password" = "비밀번호";
+"Sign In" = "로그인";

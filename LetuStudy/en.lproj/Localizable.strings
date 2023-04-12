@@ -1,0 +1,53 @@
+/*
+  Localizable.strings
+  LetuStudy
+
+  Created by Haoming Xu on 4/5/23.
+  
+*/
+
+//ContentView.swift
+"Home" = "Home";
+"Study Cards" = "Study Cards";
+"Statistics" = "Statistics";
+"Settings" = "Settings";
+
+//HomeView.swift
+"Welcome Back," = "Welcome Back,";
+"Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32";
+
+//CardsView.swift
+"Adding" = "Adding";
+"Next" = "Next";
+"Previous" = "Previous";
+
+//SettingsView.swift
+"Notifications settings" = "Notifications settings";
+"Notification" = "Notification";
+"Display settings" = "Display settings";
+"Dark Mode" = "Dark Mode";
+"Brightness Adjustment" = "Brightness Adjustment";
+"General settings" = "General settings";
+"Sound" = "Sound";
+"User Role" = "User Role";
+
+"Student" = "Student";
+"Instructor" = "Instructor";
+"Other" = "Other";
+
+"Accessibility Settings" = "Accessibility Settings";
+"Accessibility Mode" = "Accessibility Mode";
+"Reverse Color" = "Reverse Color";
+"VoiceOver" = "VoiceOver";
+
+//LoginView.swift
+"Username" = "Username";
+"Password" = "Password";
+"Sign In" = "Sign In";
+
+"Add" = "Add";
+"Term" = "Term";
+"Definition" = "Definition";
+"Done" = "Done";
+"Edit" = "Edit";
+"Total Studying" = "Total Studying";

@@ -1,0 +1,46 @@
+/*
+  Localizable.strings
+  LetuStudy
+
+  Created by Haoming Xu on 4/5/23.
+  
+*/
+
+//ContentView.swift
+"Home" = "Inicio";
+"Study Cards" = "Tarjetas de Estudio";
+"Statistics" = "Estadísticas";
+"Settings" = "Configuración";
+
+//HomeView.swift
+"Welcome Back," = "Bienvenido de nuevo,";
+"Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "Último conjunto de estudio: Vocabulario 1\n\nÚltima apertura: 02/15/2023 09:32";
+
+//CardsView.swift
+"Adding" = "Agregar";
+"Next" = "Siguiente";
+"Previous" = "Anterior";
+
+//SettingsView.swift
+"Notifications settings" = "Configuración de Notificaciones";
+"Notification" = "Notificación";
+"Display settings" = "Configuración de Pantalla";
+"Dark Mode" = "Modo Oscuro";
+"Brightness Adjustment" = "Ajuste de Brillo";
+"General settings" = "Configuración General";
+"Sound" = "Sonido";
+"User Role" = "Rol de Usuario";
+
+"Student" = "Estudiante";
+"Instructor" = "Instructor";
+"Other" = "Otro";
+
+"Accessibility Settings" = "Configuración de Accesibilidad";
+"Accessibility Mode" = "Modo de Accesibilidad";
+"Reverse Color" = "Color Invertido";
+"VoiceOver" = "VoiceOver";
+
+//LoginView.swift
+"Username" = "Nombre de Usuario";
+"Password" = "Contraseña";
+"Sign In" = "Iniciar Sesión";

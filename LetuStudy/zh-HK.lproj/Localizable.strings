@@ -1,0 +1,53 @@
+/*
+  Localizable.strings
+  LetuStudy
+
+  Created by Haoming Xu on 4/5/23.
+  
+*/
+
+//ContentView.swift
+"Home" = "主頁";
+"Study Cards" = "學習卡片";
+"Statistics" = "統計數據";
+"Settings" = "設置";
+
+//HomeView.swift
+"Welcome Back," = "歡迎回來，";
+"Last study set:             Vocabulary 1\n\nLast opened:       02/15/2023 09:32" = "最近學習卡片：        詞彙 1\n\n最後開啟：   02/15/2023";
+
+//CardsView.swift
+"Adding" = "新增";
+"Next" = "下一個";
+"Previous" = "上一個";
+
+//SettingsView.swift
+"Notifications settings" = "通知設定";
+"Notification" = "通知";
+"Display settings" = "顯示設定";
+"Dark Mode" = "暗色模式";
+"Brightness Adjustment" = "亮度調節";
+"General settings" = "一般設定";
+"Sound" = "聲音";
+"User Role" = "使用者角色";
+
+"Student" = "學生";
+"Instructor" = "教師";
+"Other" = "其他";
+
+"Accessibility Settings" = "輔助功能設定";
+"Accessibility Mode" = "輔助功能模式";
+"Reverse Color" = "反相顏色";
+"VoiceOver" = "VoiceOver";
+
+//LoginView.swift
+"Username" = "用戶名稱";
+"Password" = "密碼";
+"Sign In" = "登入";
+
+"Add" = "添加";
+"Term" = "词条";
+"Definition" = "定义";
+"Done" = "完成";
+"Edit" = "编辑";
+"Total Studying" = "总学习时长";
