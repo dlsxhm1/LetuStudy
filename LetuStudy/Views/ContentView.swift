@@ -15,7 +15,7 @@ struct ContentView : View {
 	@State var currentUsername = ""
 	
 	//Defines bar size for sliding bar animation
-	private var singleTabWidth = UIScreen.main.bounds.width / 4
+	private var singleTabWidth = UIScreen.main.bounds.width / 2
 	
 	init() {
 		//Change Tab Bar background color
@@ -27,30 +27,30 @@ struct ContentView : View {
 		ZStack(alignment: .bottomLeading) {
 			//Tab Bar
 			TabView(selection: $tabViewSelection){
-				HomeView()
-					.tabItem {
-						Image(systemName:"house")
-						Text("Home")
-					}.tag(0)
-					.foregroundColor(Color("AccentColor"))
-				CardsView()
+//				HomeView()
+//					.tabItem {
+//						Image(systemName:"house")
+//						Text("Home")
+//					}.tag(0)
+//					.foregroundColor(Color("AccentColor"))
+				SetsView()
 					.tabItem {
 						Image(systemName: "rectangle.on.rectangle.angled")
 						Text("Study Cards")
-					}.tag(1)
+					}.tag(0)
 					.foregroundColor(Color("AccentColor"))
 				StatsView()
 					.tabItem {
 						Image(systemName: "chart.bar.xaxis")
 						Text("Statistics")
-					}.tag(2)
+					}.tag(1)
 					.foregroundColor(Color("AccentColor"))
-				SettingsView()
-					.tabItem {
-						Image(systemName: "gear")
-						Text("Settings")
-					}.tag(3)
-					.foregroundColor(Color("AccentColor"))
+//				SettingsView()
+//					.tabItem {
+//						Image(systemName: "gear")
+//						Text("Settings")
+//					}.tag(3)
+//					.foregroundColor(Color("AccentColor"))
 			}
 			.padding(.bottom, 10.0)
 			.accentColor(Color("AccentColor"))
