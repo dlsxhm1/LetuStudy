@@ -34,8 +34,10 @@ struct SetsView: View {
     var body: some View {
 		NavigationStack{
 			List{
-				ForEach(Studyset, id: \.name) { StudySet in
-					NavigationLink(destination: <#T##Destination#>, label: <#T##() -> Label#>)
+				ForEach(studysets, id: \.id)
+				{ studySet in
+					let setName = studySet.name
+					NavigationLink(setName, destination: CardsView())
 				}
 			}
 			.navigationTitle("Study Sets")

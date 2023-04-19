@@ -33,7 +33,7 @@ struct ContentView : View {
 //						Text("Home")
 //					}.tag(0)
 //					.foregroundColor(Color("AccentColor"))
-				CardsView()
+				SetsView()
 					.tabItem {
 						Image(systemName: "rectangle.on.rectangle.angled")
 						Text("Study Cards")
