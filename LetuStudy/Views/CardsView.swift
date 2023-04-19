@@ -8,17 +8,17 @@
 import SwiftUI
 import CoreData
 
-struct Point
-{
-	public var term: String
-	public var description: String
-	
-	init(term: String, description: String)
-	{
-		self.term = term
-		self.description = description
-	}
-}
+//struct Point
+//{
+//	public var term: String
+//	public var description: String
+//
+//	init(term: String, description: String)
+//	{
+//		self.term = term
+//		self.description = description
+//	}
+//}
 
 struct CardsView: View
 {

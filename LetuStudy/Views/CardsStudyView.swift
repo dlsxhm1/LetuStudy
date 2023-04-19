@@ -21,16 +21,9 @@ struct CardsStudyView : View
 
 	@State public var studyPoints : [StudyPoint]
 	
-	init(studyPoints: [StudyPoint]?)
+	init(studyPoints: [StudyPoint])
 	{
-		if (studyPoints == nil)
-		{
-			self.studyPoints = []
-		}
-		else
-		{
-			self.studyPoints = studyPoints!
-		}
+		self.studyPoints = studyPoints
 	}
 	
 	func flipCard()
@@ -142,7 +135,9 @@ struct CardView : View
 
 struct CardsStudyView_Previews: PreviewProvider
 {
-	static var studyPoints : [StudyPoint] =
+	static var emptyStudyPoints : [StudyPoint] = []
+	
+	static var generatedStudyPoints : [StudyPoint] =
 	{
 		let numPoints = 5
 		
@@ -163,9 +158,9 @@ struct CardsStudyView_Previews: PreviewProvider
 	
 	static var previews: some View
 	{
-		CardsStudyView(studyPoints: nil)
+		CardsStudyView(studyPoints: emptyStudyPoints)
 			.previewDisplayName("No Study Points")
-		CardsStudyView(studyPoints: studyPoints)
+		CardsStudyView(studyPoints: generatedStudyPoints)
 			.previewDisplayName("With Study Points")
 	}
 }
