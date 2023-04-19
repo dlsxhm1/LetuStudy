@@ -31,9 +31,12 @@ struct SetsView: View {
 	
 	var studysets: [Studyset] = [.init(name: "StudySet 1"), .init(name: "StudySet 2"), .init(name: "StudySet 3"),]
 	
-    var body: some View {
-		NavigationStack{
-			List{
+    var body: some View
+	{
+		NavigationStack
+		{
+			List
+			{
 				ForEach(studysets, id: \.id)
 				{ studySet in
 					let setName = studySet.name
@@ -77,12 +80,42 @@ struct SetsView: View {
 				}
 			}
 		}
-		
+		.onAppear()
+		{
+			let studySetFetchRequest = StudySet.fetchRequest()
+			var fetchResultOpt: [StudySet]?
+			
+			persistentStore.viewContext.performAndWait {
+				do
+				{
+					fetchResultOpt = try persistentStore.viewContext.fetch(studySetFetchRequest)
+				}
+				catch
+				{
+					print("Error fetching study sets: \(error)")
+				}
+			}
+			
+			guard fetchResultOpt != nil && fetchResultOpt!.count > 0 else
+			{
+				print("No study sets found")
+				return
+			}
+			
+			let fetchResult = fetchResultOpt!
+			
+			for studySet in fetchResult
+			{
+				print("name: \(studySet.name) lastOpened: \(studySet.lastOpened)")
+			}
+		}
     }
 }
 
-struct StudycardView_Previews: PreviewProvider {
-    static var previews: some View {
+struct StudycardView_Previews: PreviewProvider
+{
+    static var previews: some View
+	{
         SetsView()
     }
 }
