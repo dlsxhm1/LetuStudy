@@ -10,7 +10,7 @@ import CoreData
 
 struct CardsPreviewConvenience
 {
-	static func newStudySet(name: String) -> StudySet
+	private static func newStudySet(name: String) -> StudySet
 	{
 		let appDelegate = UIApplication.shared.delegate as! AppDelegate
 		let moc = appDelegate.persistentContainer.viewContext
