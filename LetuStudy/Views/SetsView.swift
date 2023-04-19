@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct StudycardView: View {
+struct SetsView: View {
 	@ObservedObject private var keyboardManager = KeyboardManager()
 	
 	enum Focusable: Hashable
@@ -81,7 +81,7 @@ struct StudycardView: View {
 
 struct StudycardView_Previews: PreviewProvider {
     static var previews: some View {
-        StudycardView()
+        SetsView()
     }
 }
 
