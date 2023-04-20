@@ -158,8 +158,8 @@ struct CardsStudyView_Previews: PreviewProvider
 	static var previews: some View
 	{
 		CardsStudyView(studyPoints: emptyStudyPoints)
-			.previewDisplayName("No Study Points")
+			.previewDisplayName("Empty Set")
 		CardsStudyView(studyPoints: generatedStudyPoints)
-			.previewDisplayName("With Study Points")
+			.previewDisplayName("Generated Set")
 	}
 }

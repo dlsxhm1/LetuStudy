@@ -33,37 +33,37 @@ struct SetsView: View {
 			.navigationBarTitleDisplayMode(.large)
 		}
 		.onAppear()
-				{
-					// load study sets
-					let studySetFetchRequest = StudySet.fetchRequest()
-					var fetchResultOpt: [StudySet]?
-					
-					managedObjectContext.performAndWait
-					{
-						do
-						{
-							fetchResultOpt = try managedObjectContext.fetch(studySetFetchRequest)
-						}
-						catch
-						{
-							print("Error fetching study sets: \(error)")
-						}
-					}
-					
-					guard fetchResultOpt != nil && fetchResultOpt!.count > 0 else
-					{
-						print("No study sets found")
-						return
-					}
-					
-					let fetchResult = fetchResultOpt!
-					
-					studySets = fetchResult
-					for studySet in fetchResult
-					{
-						print("name: \(studySet.name) lastOpened: \(studySet.lastOpened)")
-					}
-				}
+		{
+			// load study sets
+//			let studySetFetchRequest = StudySet.fetchRequest()
+//			var fetchResultOpt: [StudySet]?
+//			
+//			managedObjectContext.performAndWait
+//			{
+//				do
+//				{
+//					fetchResultOpt = try managedObjectContext.fetch(studySetFetchRequest)
+//				}
+//				catch
+//				{
+//					print("Error fetching study sets: \(error)")
+//				}
+//			}
+//			
+//			guard fetchResultOpt != nil && fetchResultOpt!.count > 0 else
+//			{
+//				print("No study sets found")
+//				return
+//			}
+//			
+//			let fetchResult = fetchResultOpt!
+//			
+//			studySets = fetchResult
+//			for studySet in fetchResult
+//			{
+//				print("name: \(studySet.name) lastOpened: \(studySet.lastOpened)")
+//			}
+		}
     }
 }
 

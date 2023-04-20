@@ -22,7 +22,7 @@ struct Point
 
 struct CardsEditView : View
 {
-	@State private var studyPoints : [StudyPoint] = []
+	@State private var studyPoints : [StudyPoint]
 	private var studySet : StudySet
 	
 	@ObservedObject private var keyboardManager = KeyboardManager()
