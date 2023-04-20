@@ -8,72 +8,80 @@
 import SwiftUI
 import CoreData
 
+enum Focusable: Hashable
+{
+	case none
+	case add
+	case row(id: String)
+}
+
 struct CardsView: View
 {
 	@ObservedObject var keyboardManager = KeyboardManager()
 	private var studySet : StudySet
 	
+	@State private var isEditing : Bool
+	
 	init(studySet: StudySet)
 	{
 		self.studySet = studySet
+		self.isEditing = studySet.points.count == 0
 	}
 	
 	var body: some View
 	{
 		NavigationStack
 		{
-			VStack(alignment: .center, spacing: 20)
+			VStack()
 			{
-				CardsEditView(studySet: self.studySet)
+				if (self.isEditing)
+				{
+					CardsEditView(studySet: self.studySet)
+				}
+				else
+				{
+					CardsStudyView(studySet: self.studySet)
+				}
 			}
-			.frame(maxWidth: UIScreen.main.bounds.width)
+			.onAppear()
+			{
+				self.isEditing = studySet.points.count == 0
+			}
 			.navigationTitle("Study Cards")
 			.navigationBarTitleDisplayMode(.large)
 			.toolbar
 			{
 				ToolbarItem(placement: .navigationBarTrailing)
 				{
-					Button
+					Button(action:
 					{
-						
-					}
-				label:
+						guard !keyboardManager.isVisible else
+						{
+							
+							return
+						}
+						withAnimation
+						{
+							self.isEditing = !isEditing
+						}
+					})
 					{
-						Text("Edit")
+						if (isEditing)
+						{
+							Text("Done")
+								.bold()
+						}
+						else
+						{
+							Text("Edit")
+						}
 					}
-					.disabled(true)
-
-//					Button(action:
-//					{
-//						guard !keyboardManager.isVisible else
-//						{
-//							focusedPoint = nil
-//							return
-//						}
-//						withAnimation
-//						{
-//							self.isEditing = !isEditing
-//						}
-//					})
-//					{
-//						if (isEditing)
-//						{
-//							Text("Done")
-//								.bold()
-//						}
-//						else
-//						{
-//							Text("Edit")
-//						}
-//					}
-//					.transaction
-//					{ t in
-//						t.animation = .none
-//					}
-//					.disabled(!keyboardManager.isVisible && points.count <= 0)
+					.transaction
+					{ t in
+						t.animation = .none
+					}
 				}
 			}
-			
 		}
 	}
 	
@@ -122,5 +130,8 @@ struct CardsView_Previews: PreviewProvider
     static var previews: some View
 	{
 		CardsView(studySet: CardsPreviewConvenience.emptyStudySet())
+			.previewDisplayName("Empty Set")
+		CardsView(studySet: CardsPreviewConvenience.generatedStudySet())
+			.previewDisplayName("Generated Set")
     }
 }

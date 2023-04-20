@@ -130,12 +130,12 @@
 			children = (
 				48573CB329DE1D170062E6E4 /* LetuStudyDataModel.xcdatamodeld */,
 				48573CB529DE1D170062E6E4 /* StudySet+CoreDataProperties.swift */,
-				48573CB629DE1D170062E6E4 /* StudyPoint+CoreDataClass.swift */,
 				48573CB729DE1D170062E6E4 /* StudySet+CoreDataClass.swift */,
+				48573CB629DE1D170062E6E4 /* StudyPoint+CoreDataClass.swift */,
+				48573CBB29DE1D170062E6E4 /* StudyPoint+CoreDataProperties.swift */,
 				48573CB829DE1D170062E6E4 /* DayStat+CoreDataClass.swift */,
 				48573CB929DE1D170062E6E4 /* DayStat+CoreDataProperties.swift */,
 				48573CBA29DE1D170062E6E4 /* AppStat+CoreDataProperties.swift */,
-				48573CBB29DE1D170062E6E4 /* StudyPoint+CoreDataProperties.swift */,
 				48573CBC29DE1D170062E6E4 /* AppStat+CoreDataClass.swift */,
 			);
 			path = Data;

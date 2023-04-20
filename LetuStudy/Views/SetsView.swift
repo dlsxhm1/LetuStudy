@@ -15,7 +15,7 @@ struct SetsView: View {
 		return appDelegate.persistentContainer.viewContext
 	}()
 
-	@State var studySets :[StudySet] = []
+	@State var studySets : [StudySet] = []
 	
     var body: some View
 	{
@@ -35,39 +35,35 @@ struct SetsView: View {
 		.onAppear()
 		{
 			// load study sets
-//			let studySetFetchRequest = StudySet.fetchRequest()
-//			var fetchResultOpt: [StudySet]?
-//			
-//			managedObjectContext.performAndWait
-//			{
-//				do
-//				{
-//					fetchResultOpt = try managedObjectContext.fetch(studySetFetchRequest)
-//				}
-//				catch
-//				{
-//					print("Error fetching study sets: \(error)")
-//				}
-//			}
-//			
-//			guard fetchResultOpt != nil && fetchResultOpt!.count > 0 else
-//			{
-//				print("No study sets found")
-//				return
-//			}
-//			
-//			let fetchResult = fetchResultOpt!
-//			
-//			studySets = fetchResult
-//			for studySet in fetchResult
-//			{
-//				print("name: \(studySet.name) lastOpened: \(studySet.lastOpened)")
-//			}
+			let studySetFetchRequest = StudySet.fetchRequest()
+			var fetchResultOpt: [StudySet]?
+			
+			managedObjectContext.performAndWait
+			{
+				do
+				{
+					fetchResultOpt = try managedObjectContext.fetch(studySetFetchRequest)
+				}
+				catch
+				{
+					print("Error fetching study sets: \(error)")
+				}
+			}
+			
+			guard fetchResultOpt != nil && fetchResultOpt!.count > 0 else
+			{
+				print("No study sets found")
+				return
+			}
+			
+			let fetchResult = fetchResultOpt!
+			
+			studySets = fetchResult
 		}
     }
 }
 
-struct StudycardView_Previews: PreviewProvider
+struct SetsView_Previews: PreviewProvider
 {
     static var previews: some View
 	{

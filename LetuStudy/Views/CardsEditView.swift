@@ -27,13 +27,7 @@ struct CardsEditView : View
 	
 	@ObservedObject private var keyboardManager = KeyboardManager()
 	
-	enum Focusable: Hashable
-	{
-		case none
-		case add
-		case row(id: String)
-	}
-	@FocusState var focusedPoint: Focusable?
+	@FocusState public var focusedPoint: Focusable?
 
 	init(studySet: StudySet)
 	{
@@ -69,6 +63,10 @@ struct CardsEditView : View
 			{
 				indexSet in
 				self.studyPoints.remove(atOffsets: indexSet)
+				for index in indexSet
+				{
+					self.studySet.removeFromPoints(at: index)
+				}
 			}
 			
 			Button(action:

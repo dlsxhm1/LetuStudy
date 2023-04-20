@@ -21,9 +21,9 @@ struct CardsStudyView : View
 
 	@State public var studyPoints : [StudyPoint]
 	
-	init(studyPoints: [StudyPoint])
+	init(studySet: StudySet)
 	{
-		self.studyPoints = studyPoints
+		self.studyPoints = studySet.points.array as! [StudyPoint]
 	}
 	
 	func flipCard()
@@ -81,8 +81,6 @@ struct CardsStudyView : View
 					{
 						studyingIndex -= 1
 					}
-					//Reset view to front (Word)
-					//							isFlipped = false
 				}
 				.font(.system(size: 24))
 				.disabled(studyingIndex <= 0)
@@ -93,8 +91,6 @@ struct CardsStudyView : View
 					{
 						studyingIndex += 1
 					}
-					//Reset view to front (Word)
-					//							isFlipped = false
 				}
 				.font(.system(size: 24))
 				.padding()
@@ -128,38 +124,18 @@ struct CardView : View
 				.scaledToFill()
 				.minimumScaleFactor(0.1)
 				.padding()
-		}.rotation3DEffect(Angle(degrees: rotationAngle), axis: (x: 0, y: 1, z: 0))
+		}
+		.rotation3DEffect(Angle(degrees: rotationAngle), axis: (x: 0, y: 1, z: 0))
 	}
 }
 
 struct CardsStudyView_Previews: PreviewProvider
 {
-	static var emptyStudyPoints : [StudyPoint] = []
-	
-	static var generatedStudyPoints : [StudyPoint] =
-	{
-		let numPoints = 5
-		
-		let appDelegate = UIApplication.shared.delegate as! AppDelegate
-		let moc = appDelegate.persistentContainer.viewContext
-		var buildArr : [StudyPoint] = []
-		
-		for i in 1...numPoints
-		{
-			let someStudyPoint = StudyPoint(context: moc)
-			someStudyPoint.term = "Term \(i)"
-			someStudyPoint.definition = "Definition \(i)"
-			buildArr.append(someStudyPoint)
-		}
-		
-		return buildArr
-	}()
-	
 	static var previews: some View
 	{
-		CardsStudyView(studyPoints: emptyStudyPoints)
+		CardsStudyView(studySet: CardsPreviewConvenience.emptyStudySet())
 			.previewDisplayName("Empty Set")
-		CardsStudyView(studyPoints: generatedStudyPoints)
+		CardsStudyView(studySet: CardsPreviewConvenience.generatedStudySet())
 			.previewDisplayName("Generated Set")
 	}
 }
