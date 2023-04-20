@@ -109,7 +109,6 @@ struct Card : View
 				.padding()
 			Text(textContent)
 				.font(.system(size: 32))
-				.foregroundColor(Color("AccentColor"))
 				.frame(width: width-10, height: height-30)
 				.scaledToFill()
 				.minimumScaleFactor(0.1)

@@ -9,27 +9,13 @@ import SwiftUI
 import CoreData
 
 struct SetsView: View {
-//	@ObservedObject private var keyboardManager = KeyboardManager()
-//
-//	enum Focusable: Hashable
-//	{
-//		case none
-//		case add
-//		case row(id: String)
-//	}
-//
-//	@FocusState var focusedPoint: Focusable?
-//	@State private var isEditing = false
-//	@State private var points: [Point] = []
-//
-//
-//	var persistentStore: NSPersistentContainer =
-//	{
-//		let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//		return appDelegate.persistentContainer
-//	}()
-//
-	var studysets: [Studyset] = [.init(name: "StudySet 1"), .init(name: "StudySet 2"), .init(name: "StudySet 3"),]
+	var managedObjectContext: NSManagedObjectContext =
+	{
+		let appDelegate = UIApplication.shared.delegate as! AppDelegate
+		return appDelegate.persistentContainer.viewContext
+	}()
+
+	@State var studySets :[StudySet] = []
 	
     var body: some View
 	{
@@ -37,15 +23,47 @@ struct SetsView: View {
 		{
 			List
 			{
-				ForEach(studysets, id: \.id)
+				ForEach(studySets, id: \.id)
 				{ studySet in
 					let setName = studySet.name
-					NavigationLink(setName, destination: CardsView())
+					NavigationLink(setName, destination: CardsView(studySet: studySet))
 				}
 			}
 			.navigationTitle("Study Sets")
 			.navigationBarTitleDisplayMode(.large)
 		}
+		.onAppear()
+				{
+					// load study sets
+					let studySetFetchRequest = StudySet.fetchRequest()
+					var fetchResultOpt: [StudySet]?
+					
+					managedObjectContext.performAndWait
+					{
+						do
+						{
+							fetchResultOpt = try managedObjectContext.fetch(studySetFetchRequest)
+						}
+						catch
+						{
+							print("Error fetching study sets: \(error)")
+						}
+					}
+					
+					guard fetchResultOpt != nil && fetchResultOpt!.count > 0 else
+					{
+						print("No study sets found")
+						return
+					}
+					
+					let fetchResult = fetchResultOpt!
+					
+					studySets = fetchResult
+					for studySet in fetchResult
+					{
+						print("name: \(studySet.name) lastOpened: \(studySet.lastOpened)")
+					}
+				}
     }
 }
 
