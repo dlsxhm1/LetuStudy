@@ -8,7 +8,11 @@
 import SwiftUI
 import CoreData
 
-struct SetsView: View {
+struct SetsView: View
+{
+	@State private var showingNewSetAlert = false
+	@State private var newSetName = ""
+	
 	var managedObjectContext: NSManagedObjectContext =
 	{
 		let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -31,6 +35,27 @@ struct SetsView: View {
 			}
 			.navigationTitle("Study Sets")
 			.navigationBarTitleDisplayMode(.large)
+			.toolbar
+			{
+				ToolbarItem(placement: .navigationBarTrailing)
+				{
+					Button
+					{
+						self.showingNewSetAlert.toggle()
+					}
+				label:
+					{
+						Image(systemName: "plus.circle")
+					}
+					.alert("New Study Set", isPresented: self.$showingNewSetAlert) {
+						TextField("Name", text:$newSetName)
+						Button("OK", action: submitNewStudySet)
+						Button("Cancel", role: .cancel) {}
+					} message: {
+						Text("Enter the name of the new study set")
+					}
+				}
+			}
 		}
 		.onAppear()
 		{
@@ -61,6 +86,11 @@ struct SetsView: View {
 			studySets = fetchResult
 		}
     }
+	
+	func submitNewStudySet()
+	{
+		
+	}
 }
 
 struct SetsView_Previews: PreviewProvider
