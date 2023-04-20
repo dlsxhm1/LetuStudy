@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import RealityKit
+//import RealityKit
 
 struct ContentView : View {
 	@State public var tabViewSelection = 0
@@ -32,28 +32,23 @@ struct ContentView : View {
 //						Image(systemName:"house")
 //						Text("Home")
 //					}.tag(0)
-//					.foregroundColor(Color("AccentColor"))
 				SetsView()
 					.tabItem {
 						Image(systemName: "rectangle.on.rectangle.angled")
 						Text("Study Cards")
 					}.tag(0)
-					.foregroundColor(Color("AccentColor"))
 				StatsView()
 					.tabItem {
 						Image(systemName: "chart.bar.xaxis")
 						Text("Statistics")
 					}.tag(1)
-					.foregroundColor(Color("AccentColor"))
 //				SettingsView()
 //					.tabItem {
 //						Image(systemName: "gear")
 //						Text("Settings")
 //					}.tag(3)
-//					.foregroundColor(Color("AccentColor"))
 			}
 			.padding(.bottom, 10.0)
-			.accentColor(Color("AccentColor"))
 			
 			//Sliding Animtion
 			Rectangle()
@@ -64,29 +59,7 @@ struct ContentView : View {
 			
 		}
 		.edgesIgnoringSafeArea(.bottom)
-        //ARViewContainer().edgesIgnoringSafeArea(.all)
     }
-}
-
-
-struct ARViewContainer: UIViewRepresentable {
-    
-    func makeUIView(context: Context) -> ARView {
-        
-        let arView = ARView(frame: .zero)
-        
-        // Load the "Box" scene from the "Experience" Reality File
-        let boxAnchor = try! Experience.loadBox()
-        
-        // Add the box anchor to the scene
-        arView.scene.anchors.append(boxAnchor)
-        
-        return arView
-        
-    }
-    
-    func updateUIView(_ uiView: ARView, context: Context) {}
-    
 }
 
 #if DEBUG
