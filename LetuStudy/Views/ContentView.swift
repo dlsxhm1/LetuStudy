@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 //import RealityKit
 
 struct ContentView : View {
@@ -18,6 +19,19 @@ struct ContentView : View {
 	private var singleTabWidth = UIScreen.main.bounds.width / 2
 	
 	init() {
+		let center = UNUserNotificationCenter.current()
+		center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+			if granted {
+				print("Notification Permission Granted")
+			} else if let error = error {
+				print(error.localizedDescription)
+//				Alert(
+//					title: Text("Notification Off"),
+//					message: Text("Some functions might not work properly."),
+//					dismissButton: .default(Text("Dismiss"))
+//				)
+			}
+		}
 		//Change Tab Bar background color
 		//UITabBar.appearance().isTranslucent = true
 		//UITabBar.appearance().barTintColor = UIColor(named: "AccentColor")
