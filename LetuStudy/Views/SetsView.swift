@@ -32,6 +32,20 @@ struct SetsView: View
 					let setName = studySet.name
 					NavigationLink(setName, destination: CardsView(parentView: self, studySet: studySet))
 				}
+				.onDelete
+				{ indexSet in
+					for i in indexSet
+					{
+						let set = self.studySets[i]
+						self.managedObjectContext.delete(set)
+					}
+					self.studySets.remove(atOffsets: indexSet)
+					
+					Task
+					{
+						await AppDelegate.sharedDelegate().saveContext()
+					}
+				}
 			}
 			.navigationTitle("Study Sets")
 			.navigationBarTitleDisplayMode(.large)
@@ -42,6 +56,7 @@ struct SetsView: View
 					Button
 					{
 						self.showingNewSetAlert.toggle()
+						self.newSetName = ""
 					}
 				label:
 					{
@@ -105,6 +120,11 @@ struct SetsView: View
 		withAnimation
 		{
 			self.studySets.insert(newSet, at: 0)
+		}
+		
+		Task
+		{
+			await AppDelegate.sharedDelegate().saveContext()
 		}
 	}
 }

@@ -42,6 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 			}
 		}
 	}
+	
+	class func sharedDelegate() -> AppDelegate
+	{
+		return UIApplication.shared.delegate as! AppDelegate
+	}
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
 	{
@@ -56,9 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         window.makeKeyAndVisible()
 		
 		// add data set and point
-		let set = StudySet(context: self.persistentContainer.viewContext)
-		set.name = "Test Set"
-		set.lastOpened = Date()
+//		let set = StudySet(context: self.persistentContainer.viewContext)
+//		set.name = "Test Set"
+//		set.lastOpened = Date()
 		
 		// add AppStat singleton
 		_ = appStats()
