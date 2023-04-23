@@ -30,7 +30,7 @@ struct SetsView: View
 				ForEach(studySets, id: \.id)
 				{ studySet in
 					let setName = studySet.name
-					NavigationLink(setName, destination: CardsView(studySet: studySet))
+					NavigationLink(setName, destination: CardsView(parentView: self, studySet: studySet))
 				}
 			}
 			.navigationTitle("Study Sets")
@@ -83,13 +83,29 @@ struct SetsView: View
 			
 			let fetchResult = fetchResultOpt!
 			
-			studySets = fetchResult
+			self.studySets = fetchResult
+			self.sortStudySets()
 		}
     }
 	
+	func sortStudySets()
+	{
+		self.studySets.sort
+		{ o1,o2 in
+			return o1.lastOpened > o2.lastOpened
+		}
+	}
+	
 	func submitNewStudySet()
 	{
+		let newSet = StudySet(context: self.managedObjectContext)
+		newSet.name = newSetName
+		newSet.lastOpened = Date()
 		
+		withAnimation
+		{
+			self.studySets.insert(newSet, at: 0)
+		}
 	}
 }
 

@@ -27,8 +27,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		}
 		return container
 	}()
+	
+	func saveContext() async
+	{
+		self.persistentContainer.viewContext.performAndWait
+		{
+			do
+			{
+				try self.persistentContainer.viewContext.save()
+			}
+			catch
+			{
+				print("Error saving changes: \(error)")
+			}
+		}
+	}
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+	{
 
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()

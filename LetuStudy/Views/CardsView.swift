@@ -18,12 +18,14 @@ enum Focusable: Hashable
 struct CardsView: View
 {
 	@ObservedObject var keyboardManager = KeyboardManager()
+	private var parentView : SetsView?
 	private var studySet : StudySet
 	
 	@State private var isEditing : Bool
 	
-	init(studySet: StudySet)
+	init(parentView: SetsView?, studySet: StudySet)
 	{
+		self.parentView = parentView
 		self.studySet = studySet
 		self.isEditing = studySet.points.count == 0
 	}
@@ -83,9 +85,13 @@ struct CardsView: View
 				}
 			}
 		}
-		.onDisappear()
+		.onAppear()
 		{
-			print("dissapear")
+			self.studySet.lastOpened = Date()
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
+			{
+				self.parentView?.sortStudySets()
+			}
 		}
 	}
 	
@@ -133,9 +139,9 @@ struct CardsView_Previews: PreviewProvider
 {
     static var previews: some View
 	{
-		CardsView(studySet: CardsPreviewConvenience.emptyStudySet())
+		CardsView(parentView: nil, studySet: CardsPreviewConvenience.emptyStudySet())
 			.previewDisplayName("Empty Set")
-		CardsView(studySet: CardsPreviewConvenience.generatedStudySet())
+		CardsView(parentView: nil, studySet: CardsPreviewConvenience.generatedStudySet())
 			.previewDisplayName("Generated Set")
     }
 }
