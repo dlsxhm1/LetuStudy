@@ -83,6 +83,10 @@ struct CardsView: View
 				}
 			}
 		}
+		.onDisappear()
+		{
+			print("dissapear")
+		}
 	}
 	
 	func fontSize(for text: String, in size: CGSize) -> CGFloat
