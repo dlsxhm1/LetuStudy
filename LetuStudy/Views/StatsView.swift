@@ -35,7 +35,7 @@ struct StudyCount: Identifiable
 
 
 struct StatsView: View
-{	
+{
 	@State var totalMinutes = [StudyCount]()
 	
 	var persistentStore: NSPersistentContainer =
@@ -70,7 +70,6 @@ struct StatsView: View
 							await fetchTotalMinutes()
 						}
 					}
-					
 //					GroupBox ( "Bar Chart - Study Minutes") {
 //						Chart(currentWeek) {
 //							LineMark(

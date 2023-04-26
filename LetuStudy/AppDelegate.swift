@@ -13,7 +13,6 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
-	private var turnedActiveDate : Date = Date()
 	
 	lazy var persistentContainer: NSPersistentContainer =
 	{
@@ -109,6 +108,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 			appStat = appStatOptional!
 		}
 		
+//		self.persistentContainer.viewContext.delete(appStat)
+//		return []
+		
 		let statsSet = appStat.stats
 		let cal = NSCalendar.current
 		var dayBegin = cal.startOfDay(for: Date())
@@ -116,6 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		
 		let dateSortDesc = NSSortDescriptor(key: "day", ascending: false)
 		var statsSorted = statsSet.sortedArray(using: [dateSortDesc]) as! [DayStat]
+		var removedObjects : [DayStat] = []
 		
 		guard let dayWeekBefore = cal.date(byAdding: .day, value: -7, to: dayBegin) else
 		{
@@ -129,6 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 			if (statsSorted[i].day < dayBegin)
 			{
 				print("removed \(statsSorted[i].day)")
+				removedObjects.append(statsSorted.last!)
 				statsSorted.removeLast()
 			}
 		}
@@ -145,6 +149,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		
 		fillDays(appStat: appStat, count: max(0, 7-statsSet.count), beginDate: dayBegin)
 		
+		// add and save changes to context
+		for toRemove in removedObjects
+		{
+			self.persistentContainer.viewContext.delete(toRemove)
+		}
+		Task
+		{
+			await self.saveContext()
+		}
+		
 		return statsSorted
 	}
 	
@@ -156,8 +170,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		{
 			let dayStat = DayStat(context: self.persistentContainer.viewContext)
 			dayStat.day = dayBegin
-//			dayStat.minutes = 0
-			dayStat.minutes = Int16.random(in: 0...60)
+			dayStat.minutes = 0
+//			dayStat.minutes = Int16.random(in: 0...60)
 			appStat.addToStats(dayStat)
 			
 			guard let nextDay = cal.date(byAdding: .day, value: -1, to: dayBegin) else
@@ -203,23 +217,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 	
 	func applicationWillResignActive(_ application: UIApplication)
 	{
-		let cal = NSCalendar.current
-		let endDate = Date()
-		let startOfDay = cal.startOfDay(for: endDate)
-		
-		if (turnedActiveDate < startOfDay)
-		{
-			let minutes = (Int(startOfDay.timeIntervalSinceReferenceDate) - Int(turnedActiveDate.timeIntervalSinceReferenceDate)) / 60
-			appStats()[appStats().count-2].minutes += Int16(minutes)
-		}
-		
-		let minutes = (Int(endDate.timeIntervalSinceReferenceDate) - Int(startOfDay.timeIntervalSinceReferenceDate)) / 60
-		appStats()[appStats().count-1].minutes += Int16(minutes)
+		StatsManager.shared.endAppStat()
 	}
 
     func applicationDidBecomeActive(_ application: UIApplication)
 	{
-		turnedActiveDate = Date()
     }
 }
 

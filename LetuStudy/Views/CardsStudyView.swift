@@ -10,6 +10,8 @@ import CoreData
 
 struct CardsStudyView : View
 {
+//	@Environment(\.scenePhase) var scenePhase1
+	
 	private let cardWidth : CGFloat = 300
 	private let cardHeight : CGFloat = 250
 	private let cardAnimationDuration : CGFloat = 0.15
@@ -98,7 +100,27 @@ struct CardsStudyView : View
 				Spacer()
 			}
 			.padding()
-		})
+		}
+//		.onChange(of: scenePhase, perform:
+//		{ newPhase in
+//			if (newPhase == .active)
+//			{
+//				StatsManager.shared.beginAppStat()
+//			}
+//			else if (newPhase == .inactive)
+//			{
+//				StatsManager.shared.endAppStat()
+//			}
+//		})
+		.onAppear()
+		{
+			StatsManager.shared.beginAppStat()
+		}
+		.onDisappear()
+		{
+			StatsManager.shared.endAppStat()
+		}
+		)
 	}
 }
 

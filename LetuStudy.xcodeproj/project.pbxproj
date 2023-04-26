@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4834C78229F84E3C00F56E80 /* StatsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4834C78129F84E3C00F56E80 /* StatsManager.swift */; };
 		48573CBD29DE1D180062E6E4 /* LetuStudyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48573CB329DE1D170062E6E4 /* LetuStudyDataModel.xcdatamodeld */; };
 		48573CBE29DE1D180062E6E4 /* StudySet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48573CB529DE1D170062E6E4 /* StudySet+CoreDataProperties.swift */; };
 		48573CBF29DE1D180062E6E4 /* StudyPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48573CB629DE1D170062E6E4 /* StudyPoint+CoreDataClass.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4834C78129F84E3C00F56E80 /* StatsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsManager.swift; sourceTree = "<group>"; };
 		48573CB429DE1D170062E6E4 /* LetuStudyDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LetuStudyDataModel.xcdatamodel; sourceTree = "<group>"; };
 		48573CB529DE1D170062E6E4 /* StudySet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StudySet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48573CB629DE1D170062E6E4 /* StudyPoint+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StudyPoint+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				C9ED67DB2994060A00E317D7 /* Info.plist */,
 				C97E512F2992E11100B63510 /* AppDelegate.swift */,
+				4834C78129F84E3C00F56E80 /* StatsManager.swift */,
 				48573CC629DE1DE40062E6E4 /* KeyboardManager.swift */,
 				C9C2A27229938753009CA3FC /* Views */,
 				48573CB229DE1D170062E6E4 /* Data */,
@@ -374,6 +377,7 @@
 				C97E51302992E11100B63510 /* AppDelegate.swift in Sources */,
 				48573CC729DE1DE40062E6E4 /* KeyboardManager.swift in Sources */,
 				C9C2A27129938001009CA3FC /* HomeView.swift in Sources */,
+				4834C78229F84E3C00F56E80 /* StatsManager.swift in Sources */,
 				48573CBF29DE1D180062E6E4 /* StudyPoint+CoreDataClass.swift in Sources */,
 				C95C7A622993B7340062F211 /* StatsView.swift in Sources */,
 				48573CC529DE1D180062E6E4 /* AppStat+CoreDataClass.swift in Sources */,
