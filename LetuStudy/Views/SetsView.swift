@@ -31,10 +31,24 @@ struct SetsView: View
 		{
 			List
 			{
-				ForEach(studySets, id: \.id)
+				ForEach(self.studySets, id: \.id)
 				{ studySet in
 					let setName = studySet.name
-					NavigationLink(setName, destination: CardsView(studySet: studySet))
+					NavigationLink(setName, destination: CardsView(parentView: self, studySet: studySet))
+				}
+				.onDelete
+				{ indexSet in
+					for i in indexSet
+					{
+						let set = self.studySets[i]
+						self.managedObjectContext.delete(set)
+					}
+					self.studySets.remove(atOffsets: indexSet)
+					
+					Task
+					{
+						await AppDelegate.shared.saveContext()
+					}
 				}
 			}
 			.navigationTitle("Study Sets")
@@ -57,6 +71,7 @@ struct SetsView: View
 						Button
 						{
 							self.showingNewSetAlert.toggle()
+              self.newSetName = ""
 						}
 					label:
 						{
@@ -76,33 +91,16 @@ struct SetsView: View
 		.onAppear()
 		{
 			// load study sets
-			let studySetFetchRequest = StudySet.fetchRequest()
-			var fetchResultOpt: [StudySet]?
-			
-			managedObjectContext.performAndWait
-			{
-				do
-				{
-					fetchResultOpt = try managedObjectContext.fetch(studySetFetchRequest)
-				}
-				catch
-				{
-					print("Error fetching study sets: \(error)")
-				}
-			}
-			
-			guard fetchResultOpt != nil && fetchResultOpt!.count > 0 else
-			{
-				print("No study sets found")
-				return
-			}
-			
-			let fetchResult = fetchResultOpt!
-			
-			studySets = fetchResult
+			self.studySets = StudySet.fetchAll()
+			self.sortStudySets()
 		}
     }
 	
+	func sortStudySets()
+	{
+		self.studySets = StudySet.dateSorted(studySets: self.studySets)
+	}
+  
 	func scheduleNotification() {
 		if timerVal > 0 {
 			let content = UNMutableNotificationContent()
@@ -151,7 +149,19 @@ struct SetsView: View
 	
 	func submitNewStudySet()
 	{
+		let newSet = StudySet(context: self.managedObjectContext)
+		newSet.name = newSetName
+		newSet.lastOpened = Date()
 		
+		withAnimation
+		{
+			self.studySets.insert(newSet, at: 0)
+		}
+		
+		Task
+		{
+			await AppDelegate.shared.saveContext()
+		}
 	}
 }
 

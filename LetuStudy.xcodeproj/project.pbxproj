@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4834C78229F84E3C00F56E80 /* StatsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4834C78129F84E3C00F56E80 /* StatsManager.swift */; };
+		4834C78329FB500C00F56E80 /* CardsPreviewConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9CD5429F0A9450009E5F3 /* CardsPreviewConvenience.swift */; };
 		48573CBD29DE1D180062E6E4 /* LetuStudyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48573CB329DE1D170062E6E4 /* LetuStudyDataModel.xcdatamodeld */; };
 		48573CBE29DE1D180062E6E4 /* StudySet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48573CB529DE1D170062E6E4 /* StudySet+CoreDataProperties.swift */; };
 		48573CBF29DE1D180062E6E4 /* StudyPoint+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48573CB629DE1D170062E6E4 /* StudyPoint+CoreDataClass.swift */; };
@@ -19,14 +21,12 @@
 		48573CC729DE1DE40062E6E4 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48573CC629DE1DE40062E6E4 /* KeyboardManager.swift */; };
 		48E9CD5129F097880009E5F3 /* CardsStudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9CD5029F097880009E5F3 /* CardsStudyView.swift */; };
 		48E9CD5329F097970009E5F3 /* CardsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9CD5229F097970009E5F3 /* CardsEditView.swift */; };
-		48E9CD5529F0A9450009E5F3 /* CardsPreviewConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E9CD5429F0A9450009E5F3 /* CardsPreviewConvenience.swift */; };
 		9CB4DD2229F048E0000CA2A7 /* SetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4DD2129F048E0000CA2A7 /* SetsView.swift */; };
 		C95C7A5E29938C050062F211 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C7A5D29938C050062F211 /* SettingsView.swift */; };
 		C95C7A6029938C4D0062F211 /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C7A5F29938C4D0062F211 /* CardsView.swift */; };
 		C95C7A622993B7340062F211 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95C7A612993B7340062F211 /* StatsView.swift */; };
 		C97E51302992E11100B63510 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E512F2992E11100B63510 /* AppDelegate.swift */; };
 		C97E51322992E11100B63510 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E51312992E11100B63510 /* ContentView.swift */; };
-		C97E51342992E11100B63510 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = C97E51332992E11100B63510 /* Experience.rcproject */; };
 		C97E51362992E11300B63510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97E51352992E11300B63510 /* Assets.xcassets */; };
 		C97E51392992E11300B63510 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97E51382992E11300B63510 /* Preview Assets.xcassets */; };
 		C97E51432992E11300B63510 /* LetuStudyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E51422992E11300B63510 /* LetuStudyTests.swift */; };
@@ -56,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4834C78129F84E3C00F56E80 /* StatsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsManager.swift; sourceTree = "<group>"; };
 		48573CB429DE1D170062E6E4 /* LetuStudyDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LetuStudyDataModel.xcdatamodel; sourceTree = "<group>"; };
 		48573CB529DE1D170062E6E4 /* StudySet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StudySet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48573CB629DE1D170062E6E4 /* StudyPoint+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StudyPoint+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -167,6 +168,7 @@
 			children = (
 				C9ED67DB2994060A00E317D7 /* Info.plist */,
 				C97E512F2992E11100B63510 /* AppDelegate.swift */,
+				4834C78129F84E3C00F56E80 /* StatsManager.swift */,
 				48573CC629DE1DE40062E6E4 /* KeyboardManager.swift */,
 				C9C2A27229938753009CA3FC /* Views */,
 				48573CB229DE1D170062E6E4 /* Data */,
@@ -361,11 +363,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4834C78329FB500C00F56E80 /* CardsPreviewConvenience.swift in Sources */,
 				48573CC029DE1D180062E6E4 /* StudySet+CoreDataClass.swift in Sources */,
 				48573CBD29DE1D180062E6E4 /* LetuStudyDataModel.xcdatamodeld in Sources */,
 				C95C7A6029938C4D0062F211 /* CardsView.swift in Sources */,
 				48573CC329DE1D180062E6E4 /* AppStat+CoreDataProperties.swift in Sources */,
-				48E9CD5529F0A9450009E5F3 /* CardsPreviewConvenience.swift in Sources */,
 				48573CC129DE1D180062E6E4 /* DayStat+CoreDataClass.swift in Sources */,
 				9CB4DD2229F048E0000CA2A7 /* SetsView.swift in Sources */,
 				C95C7A5E29938C050062F211 /* SettingsView.swift in Sources */,
@@ -374,6 +376,7 @@
 				C97E51302992E11100B63510 /* AppDelegate.swift in Sources */,
 				48573CC729DE1DE40062E6E4 /* KeyboardManager.swift in Sources */,
 				C9C2A27129938001009CA3FC /* HomeView.swift in Sources */,
+				4834C78229F84E3C00F56E80 /* StatsManager.swift in Sources */,
 				48573CBF29DE1D180062E6E4 /* StudyPoint+CoreDataClass.swift in Sources */,
 				C95C7A622993B7340062F211 /* StatsView.swift in Sources */,
 				48573CC529DE1D180062E6E4 /* AppStat+CoreDataClass.swift in Sources */,
@@ -382,7 +385,6 @@
 				C983A4AA299ABB6400D47AA6 /* LoginView.swift in Sources */,
 				48E9CD5329F097970009E5F3 /* CardsEditView.swift in Sources */,
 				48573CBE29DE1D180062E6E4 /* StudySet+CoreDataProperties.swift in Sources */,
-				C97E51342992E11100B63510 /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

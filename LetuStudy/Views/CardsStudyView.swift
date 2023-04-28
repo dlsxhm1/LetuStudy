@@ -10,6 +10,7 @@ import CoreData
 
 struct CardsStudyView : View
 {
+	private var studySet: StudySet
 	private let cardWidth : CGFloat = 300
 	private let cardHeight : CGFloat = 250
 	private let cardAnimationDuration : CGFloat = 0.15
@@ -19,10 +20,11 @@ struct CardsStudyView : View
 	@State private var isFlipped = false
 	@State private var studyingIndex = 0
 
-	@State public var studyPoints : [StudyPoint]
+	@State private var studyPoints : [StudyPoint]
 	
 	init(studySet: StudySet)
 	{
+		self.studySet = studySet
 		self.studyPoints = studySet.points.array as! [StudyPoint]
 	}
 	
@@ -98,7 +100,16 @@ struct CardsStudyView : View
 				Spacer()
 			}
 			.padding()
-		})
+		}
+		.onAppear()
+		{
+			StatsManager.shared.beginStudyStat(studySet: self.studySet)
+		}
+		.onDisappear()
+		{
+			StatsManager.shared.endStudyStat()
+		}
+		)
 	}
 }
 

@@ -101,6 +101,13 @@ struct CardsEditView : View
 			})
 			.focused($focusedPoint, equals: .add)
 		}
+		.onDisappear()
+		{
+			Task
+			{
+				await AppDelegate.shared.saveContext()
+			}
+		}
 	}
 }
 
