@@ -1,3 +1,4 @@
+<img src="/Documents/LetuStudy_Icon_3x.png" alt="LetuStudy Logo" width="150" height="150">
 
 # LetuStudy
 
