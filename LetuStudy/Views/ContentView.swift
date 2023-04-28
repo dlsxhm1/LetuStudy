@@ -19,17 +19,13 @@ struct ContentView : View {
 	private var singleTabWidth = UIScreen.main.bounds.width / 2
 	
 	init() {
+		UIApplication.shared.applicationIconBadgeNumber = -1
 		let center = UNUserNotificationCenter.current()
-		center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+		center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
 			if granted {
 				print("Notification Permission Granted")
 			} else if let error = error {
 				print(error.localizedDescription)
-//				Alert(
-//					title: Text("Notification Off"),
-//					message: Text("Some functions might not work properly."),
-//					dismissButton: .default(Text("Dismiss"))
-//				)
 			}
 		}
 		//Change Tab Bar background color
@@ -72,6 +68,13 @@ struct ContentView : View {
 				.animation(.default, value: tabViewSelection)
 			
 		}
+//		.alert(isPresented: $notiAlert) { () -> Alert in
+//			Alert(title: Text("Notification Permission Denied"),
+//				  message: Text("Some functions might not working properly."),
+//				  primaryButton: .default(Text("Settings"), action: {
+//						UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)}),
+//				  secondaryButton: .default(Text("Cancel")))
+//		}
 		.edgesIgnoringSafeArea(.bottom)
     }
 }
