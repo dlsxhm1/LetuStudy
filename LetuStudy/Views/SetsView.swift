@@ -75,40 +75,14 @@ struct SetsView: View
 		.onAppear()
 		{
 			// load study sets
-			let studySetFetchRequest = StudySet.fetchRequest()
-			var fetchResultOpt: [StudySet]?
-			
-			managedObjectContext.performAndWait
-			{
-				do
-				{
-					fetchResultOpt = try managedObjectContext.fetch(studySetFetchRequest)
-				}
-				catch
-				{
-					print("Error fetching study sets: \(error)")
-				}
-			}
-			
-			guard fetchResultOpt != nil && fetchResultOpt!.count > 0 else
-			{
-				print("No study sets found")
-				return
-			}
-			
-			let fetchResult = fetchResultOpt!
-			
-			self.studySets = fetchResult
+			self.studySets = StudySet.fetchAll()
 			self.sortStudySets()
 		}
     }
 	
 	func sortStudySets()
 	{
-		self.studySets.sort
-		{ o1,o2 in
-			return o1.lastOpened > o2.lastOpened
-		}
+		self.studySets = StudySet.dateSorted(studySets: self.studySets)
 	}
 	
 	func submitNewStudySet()

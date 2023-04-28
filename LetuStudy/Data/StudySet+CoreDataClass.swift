@@ -12,6 +12,42 @@ import CoreData
 @objc(StudySet)
 public class StudySet: NSManagedObject
 {
+	class func fetchAll() -> [StudySet]
+	{
+		// load study sets
+		let managedObjectContext = AppDelegate.shared.persistentContainer.viewContext
+		let studySetFetchRequest = StudySet.fetchRequest()
+		var fetchResult: [StudySet]?
+		
+		managedObjectContext.performAndWait
+		{
+			do
+			{
+				fetchResult = try managedObjectContext.fetch(studySetFetchRequest)
+			}
+			catch
+			{
+				print("Error fetching study sets: \(error)")
+			}
+		}
+		
+		guard fetchResult != nil && fetchResult!.count > 0 else
+		{
+			print("No study sets found")
+			return []
+		}
+		
+		return fetchResult!
+	}
+	
+	class func dateSorted(studySets: [StudySet]) -> [StudySet]
+	{
+		return studySets.sorted
+		{ o1,o2 in
+			return o1.lastOpened > o2.lastOpened
+		}
+	}
+	
 	// Returns a sorted array of the study set stats
 	func sortedStats() -> [DayStat]
 	{
