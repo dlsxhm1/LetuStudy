@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 //import RealityKit
 
 struct ContentView : View {
@@ -18,6 +19,15 @@ struct ContentView : View {
 	private var singleTabWidth = UIScreen.main.bounds.width / 2
 	
 	init() {
+		UIApplication.shared.applicationIconBadgeNumber = -1
+		let center = UNUserNotificationCenter.current()
+		center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+			if granted {
+				print("Notification Permission Granted")
+			} else if let error = error {
+				print(error.localizedDescription)
+			}
+		}
 		//Change Tab Bar background color
 		//UITabBar.appearance().isTranslucent = true
 		//UITabBar.appearance().barTintColor = UIColor(named: "AccentColor")
@@ -58,6 +68,13 @@ struct ContentView : View {
 				.animation(.default, value: tabViewSelection)
 			
 		}
+//		.alert(isPresented: $notiAlert) { () -> Alert in
+//			Alert(title: Text("Notification Permission Denied"),
+//				  message: Text("Some functions might not working properly."),
+//				  primaryButton: .default(Text("Settings"), action: {
+//						UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)}),
+//				  secondaryButton: .default(Text("Cancel")))
+//		}
 		.edgesIgnoringSafeArea(.bottom)
     }
 }

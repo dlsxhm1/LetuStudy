@@ -7,11 +7,15 @@
 
 import SwiftUI
 import CoreData
+import UserNotifications
 
 struct SetsView: View
 {
+	@State private var isPickerVisible = false
 	@State private var showingNewSetAlert = false
 	@State private var newSetName = ""
+	@State var timerVal = 0
+	@State var secondScreenShown = false
 	
 	var managedObjectContext: NSManagedObjectContext =
 	{
@@ -53,21 +57,33 @@ struct SetsView: View
 			{
 				ToolbarItem(placement: .navigationBarTrailing)
 				{
-					Button
-					{
-						self.showingNewSetAlert.toggle()
-						self.newSetName = ""
-					}
-				label:
-					{
-						Image(systemName: "plus.circle")
-					}
-					.alert("New Study Set", isPresented: self.$showingNewSetAlert) {
-						TextField("Name", text:$newSetName)
-						Button("OK", action: submitNewStudySet)
-						Button("Cancel", role: .cancel) {}
-					} message: {
-						Text("Enter the name of the new study set")
+					HStack {
+						Picker("Time", selection: $timerVal) {
+							ForEach(0..<61) { minute in
+								Text("\(minute) min")
+							}
+						}
+						Button(action: {
+							scheduleNotification()
+						}) {
+							Text("Set Time")
+						}
+						Button
+						{
+							self.showingNewSetAlert.toggle()
+              self.newSetName = ""
+						}
+					label:
+						{
+							Image(systemName: "plus.circle")
+						}
+						.alert("New Study Set", isPresented: self.$showingNewSetAlert) {
+							TextField("Name", text:$newSetName)
+							Button("OK", action: submitNewStudySet)
+							Button("Cancel", role: .cancel) {}
+						} message: {
+							Text("Enter the name of the new study set")
+						}
 					}
 				}
 			}
@@ -84,6 +100,52 @@ struct SetsView: View
 	{
 		self.studySets = StudySet.dateSorted(studySets: self.studySets)
 	}
+  
+	func scheduleNotification() {
+		if timerVal > 0 {
+			let content = UNMutableNotificationContent()
+			content.title = "Time is up!"
+			content.body = "Your \(timerVal) minute timer has expired."
+			let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timerVal * 6), repeats: false)
+			let request = UNNotificationRequest(identifier: "timer", content: content, trigger: trigger)
+			UNUserNotificationCenter.current().add(request) { (error) in
+				if error != nil {
+					print(error?.localizedDescription ?? "Unknown error")
+				}
+			}
+			let dispatchTime = DispatchTime.now() + .seconds(timerVal * 6)
+			DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+				if UIApplication.shared.applicationState == .active {
+					// App is in the foreground, show an alert
+					let alert = UIAlertController(title: "Time is up!", message: "Your \(timerVal) minute timer has expired.", preferredStyle: .alert)
+					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+					UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+				} else {
+					// App is in the background, show a notification
+					let notification = UNMutableNotificationContent()
+					notification.title = "Time is up!"
+					notification.body = "Your \(timerVal) minute timer has expired."
+					notification.sound = .default
+					let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+					let notificationRequest = UNNotificationRequest(identifier: "timer", content: notification, trigger: notificationTrigger)
+					UNUserNotificationCenter.current().add(notificationRequest) { (error) in
+						if error != nil {
+							print(error?.localizedDescription ?? "Unknown error")
+						}
+					}
+				}
+			}
+		}
+	}
+//	var pickerSheet: some View {
+//		Picker("Time", selection: $timerVal) {
+//			ForEach(0..<61) { minute in
+//				Text("\(minute) min")
+//			}
+//		}
+//		.pickerStyle(WheelPickerStyle())
+//		.frame(height: 150)
+//	}
 	
 	func submitNewStudySet()
 	{
