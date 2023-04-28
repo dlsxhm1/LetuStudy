@@ -57,21 +57,26 @@ struct SetsView: View
 			{
 				ToolbarItem(placement: .navigationBarTrailing)
 				{
-					HStack {
-						Picker("Time", selection: $timerVal) {
-							ForEach(0..<61) { minute in
+					HStack
+					{
+						Picker("Time", selection: $timerVal)
+						{
+							ForEach(0..<61)
+							{ minute in
 								Text("\(minute) min")
 							}
 						}
-						Button(action: {
+						Button(action:
+						{
 							scheduleNotification()
-						}) {
+						})
+						{
 							Text("Set Time")
 						}
 						Button
 						{
 							self.showingNewSetAlert.toggle()
-              self.newSetName = ""
+							self.newSetName = ""
 						}
 					label:
 						{
@@ -101,30 +106,36 @@ struct SetsView: View
 		self.studySets = StudySet.dateSorted(studySets: self.studySets)
 	}
   
-	func scheduleNotification() {
-		if timerVal > 0 {
+	func scheduleNotification()
+	{
+		if timerVal > 0
+		{
 			let content = UNMutableNotificationContent()
 			content.title = "Time is up!"
 			content.body = "Your \(timerVal) minute timer has expired."
 			let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timerVal * 6), repeats: false)
 			let request = UNNotificationRequest(identifier: "timer", content: content, trigger: trigger)
-			UNUserNotificationCenter.current().add(request) { (error) in
+			UNUserNotificationCenter.current().add(request)
+			{ (error) in
 				if error != nil {
 					print(error?.localizedDescription ?? "Unknown error")
 				}
 			}
 			let dispatchTime = DispatchTime.now() + .seconds(timerVal * 6)
 			DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-				if UIApplication.shared.applicationState == .active {
+				if UIApplication.shared.applicationState == .active
+				{
 					// App is in the foreground, show an alert
-					let alert = UIAlertController(title: "Time is up!", message: "Your \(timerVal) minute timer has expired.", preferredStyle: .alert)
+					let alert = UIAlertController(title: "Time to study!", message: "Its time to start studying with LetuStudy!", preferredStyle: .alert)
 					alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 					UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
-				} else {
+				}
+				else
+				{
 					// App is in the background, show a notification
 					let notification = UNMutableNotificationContent()
-					notification.title = "Time is up!"
-					notification.body = "Your \(timerVal) minute timer has expired."
+					notification.title = "Time to study!"
+					notification.body = "Its time to start studying with LetuStudy!"
 					notification.sound = .default
 					let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
 					let notificationRequest = UNNotificationRequest(identifier: "timer", content: notification, trigger: notificationTrigger)
