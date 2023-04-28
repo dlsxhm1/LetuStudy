@@ -9,29 +9,71 @@ import SwiftUI
 import CoreData
 import Charts
 
-struct StudyCount: Identifiable
+struct ChartPoint: Identifiable
 {
 	let id = UUID()
-	let weekday: Date
-	let studyMinutes: Int
-	
-	init(day: Date, studyMinutes: Int)
+	let day: Date
+	let minutes: Int
+
+	init(day: Date, minutes: Int)
 	{
 		let cal = NSCalendar.current
-		self.weekday = cal.startOfDay(for: day)
-		self.studyMinutes = studyMinutes
+		self.day = cal.startOfDay(for: day)
+		self.minutes = minutes
+	}
+}
+
+struct StatsChartData: Identifiable
+{
+	let id = UUID()
+	var points: [ChartPoint]
+	let name: String
+	
+	init(name: String?)
+	{
+		self.points = []
+		self.name = name ?? ""
+	}
+	
+	init(name: String?, statsObject: StatsDataObject?)
+	{
+		guard let statsObjectUnwrapped = statsObject else
+		{
+			self.points = []
+			self.name = name ?? ""
+			return
+		}
+		
+		if (name == nil)
+		{
+			if (statsObjectUnwrapped is StudySet)
+			{
+				let statsObjectUnwrapped = statsObjectUnwrapped as! StudySet
+				self.name = statsObjectUnwrapped.name
+			}
+			else
+			{
+				self.name = "Total Studying"
+			}
+		}
+		else
+		{
+			self.name = name!
+		}
+		
+		self.points = []
+		let stats = StatsManager.sortedStats(object: statsObjectUnwrapped)
+		for p in stats
+		{
+			self.points.append(ChartPoint(day: p.day, minutes: Int(p.minutes)))
+		}
 	}
 }
 
 struct StatsView: View
 {
-	@State var totalMinutes = [StudyCount]()
-	
-	var persistentStore: NSPersistentContainer =
-	{
-		let appDelegate = UIApplication.shared.delegate as! AppDelegate
-		return appDelegate.persistentContainer
-	}()
+	@State private var appStatsChartData = StatsChartData(name: "Total Studying")
+	@State private var studySetsChartData = [StatsChartData]()
 	
     var body: some View
 	{
@@ -41,85 +83,59 @@ struct StatsView: View
 			{
 				VStack
 				{
-					GroupBox ("Total Studying")
+					GroupBox(self.appStatsChartData.name)
 					{
-						Chart(self.totalMinutes)
+						Chart(self.appStatsChartData.points)
 						{
 							BarMark(
-								x: .value("Week Day", $0.weekday, unit: .day),
-								y: .value("Study Time", $0.studyMinutes)
+								x: .value("Week Day", $0.day, unit: .day),
+								y: .value("Study Time", $0.minutes)
 							)
 						}
 					}
 					.frame(height: 200.0)
-					.onAppear()
+					.task
 					{
-						Task
+						let appStatsChartData = StatsChartData(name: "Total Studying", statsObject: AppDelegate.shared.sharedAppStat)
+						var studySetsChartData = [StatsChartData]()
+						
+						let studySets = StudySet.dateSorted(studySets: StudySet.fetchAll())
+						for someSet in studySets
 						{
-							await fetchTotalMinutes()
+							let chartData = StatsChartData(name: nil, statsObject: someSet)
+							studySetsChartData.append(chartData)
 						}
+						self.appStatsChartData = appStatsChartData
+						self.studySetsChartData = studySetsChartData
 					}
 					
-					Divider()
-					
-					
-//					GroupBox ( "Bar Chart - Study Minutes") {
-//						Chart(currentWeek) {
-//							LineMark(
-//								x: .value("Week Day", $0.weekday, unit: .day),
-//								y: .value("Study Time", $0.studyMinutes)
-//							)
-//						}
-//					}
-//					.frame(height: 200.0)
-//
-//					GroupBox ( "Point Chart - Study Minutes") {
-//						Chart(currentWeek) {
-//							PointMark(
-//								x: .value("Week Day", $0.weekday, unit: .day),
-//								y: .value("Study Time", $0.studyMinutes)
-//							)
-//						}
-//					}
-//					.frame(height: 200.0)
-//
-//					GroupBox ( "Rectangle Chart - Study Minutes") {
-//						Chart(currentWeek) {
-//							RectangleMark(
-//								x: .value("Week Day", $0.weekday, unit: .day),
-//								y: .value("Study Time", $0.studyMinutes)
-//							)
-//						}
-//					}
-//					.frame(height: 200.0)
-//
-//					GroupBox ( "Line Chart - Study Minutes") {
-//						Chart(currentWeek) {
-//							AreaMark(
-//								x: .value("Week Day", $0.weekday, unit: .day),
-//								y: .value("Study Time", $0.studyMinutes)
-//							)
-//						}
-//					}
-//					.frame(height: 200.0)
-//
+					if (self.studySetsChartData.count > 0)
+					{
+						Divider()
+							.frame(height: 10.0)
+					}
+
+					ForEach(self.studySetsChartData, id:\.id)
+					{ chartData in
+						GroupBox(chartData.name)
+						{
+							Chart(chartData.points)
+							{
+								BarMark(
+									x: .value("Week Day", $0.day, unit: .day),
+									y: .value("Study Time", $0.minutes)
+								)
+							}
+						}
+						.frame(height: 200.0)
+					}
 				}
 			}
 			.navigationTitle("Statistics")
+			.padding(.leading)
+			.padding(.trailing)
 		}
     }
-	
-	func fetchTotalMinutes() async
-	{
-		let appStat = await (UIApplication.shared.delegate as! AppDelegate).sharedAppStat
-		let sortedStats = StatsManager.sortedStats(object: appStat)
-		totalMinutes = [StudyCount]()
-		for stat in sortedStats
-		{
-			let studyCount = StudyCount(day: stat.day, studyMinutes: Int(stat.minutes))
-			totalMinutes.append(studyCount)
-		}
-	}
 }
 
 struct StatsView_Previews: PreviewProvider

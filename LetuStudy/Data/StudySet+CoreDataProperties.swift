@@ -24,7 +24,7 @@ extension StudySet
 }
 
 // MARK: Generated accessors for points
-extension StudySet
+extension StudySet: StatsDataObject
 {
     @objc(insertObject:inPointsAtIndex:)
     @NSManaged public func insertIntoPoints(_ value: StudyPoint, at idx: Int)

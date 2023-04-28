@@ -55,6 +55,7 @@ class StatsManager
 		}
 		
 		let appStats = StatsManager.sortedStats(object: AppDelegate.shared.sharedAppStat)
+		let studySetStats = StatsManager.sortedStats(object: self.trackingStudySet!)
 		let cal = NSCalendar.current
 		let endDate = Date()
 		let startOfDay = cal.startOfDay(for: endDate)
@@ -65,12 +66,14 @@ class StatsManager
 			let minutes = (Int(startOfDay.timeIntervalSinceReferenceDate) - Int(appStatBeginDateUnwrapped.timeIntervalSinceReferenceDate))// / 60
 			// add to previous day
 			appStats[1].minutes += Int16(minutes)
+			studySetStats[1].minutes += Int16(minutes)
 			appStatBeginDateUnwrapped = startOfDay
 		}
 		
 		let minutes = (Int(endDate.timeIntervalSinceReferenceDate) - Int(appStatBeginDateUnwrapped.timeIntervalSinceReferenceDate))// / 60
 		// add to current day
 		appStats[0].minutes += Int16(minutes)
+		studySetStats[0].minutes += Int16(minutes)
 		Task
 		{
 			await AppDelegate.shared.saveContext()

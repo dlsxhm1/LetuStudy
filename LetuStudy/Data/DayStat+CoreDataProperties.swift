@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension DayStat
 {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<DayStat>
@@ -25,5 +24,5 @@ extension DayStat
 
 extension DayStat : Identifiable
 {
-
+	
 }

@@ -27,7 +27,7 @@ struct SetsView: View
 		{
 			List
 			{
-				ForEach(studySets, id: \.id)
+				ForEach(self.studySets, id: \.id)
 				{ studySet in
 					let setName = studySet.name
 					NavigationLink(setName, destination: CardsView(parentView: self, studySet: studySet))
