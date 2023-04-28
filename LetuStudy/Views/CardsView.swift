@@ -49,7 +49,7 @@ struct CardsView: View
 			{
 				self.isEditing = studySet.points.count == 0
 			}
-			.navigationTitle("Study Cards")
+			.navigationTitle(self.studySet.name)
 			.navigationBarTitleDisplayMode(.large)
 			.toolbar
 			{
