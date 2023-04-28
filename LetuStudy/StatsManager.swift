@@ -6,32 +6,55 @@
 //
 
 import Foundation
+import CoreData
 
 class StatsManager
 {
 	static let shared: StatsManager = StatsManager()
 	
-	private var appStatBeginDate: Date?
+	private var trackingStudySet: StudySet?
+	private var beginDate: Date?
+	
+	func beginStudyStat(studySet: StudySet)
+	{
+		guard trackingStudySet == nil else
+		{
+			print("Already tracking statistics for \(studySet.name)")
+			return
+		}
+		trackingStudySet = studySet
+		self.beginAppStat()
+	}
+	
+	func endStudyStat()
+	{
+		self.endAppStat()
+		trackingStudySet = nil
+	}
 	
 	func beginAppStat()
 	{
-		guard appStatBeginDate == nil else
+		guard trackingStudySet != nil else
+		{
+			return
+		}
+		guard beginDate == nil else
 		{
 			print("AppStat is already tracking statistics")
 			return
 		}
-		appStatBeginDate = Date()
+		beginDate = Date()
 	}
 	
 	func endAppStat()
 	{
-		guard var appStatBeginDateUnwrapped = appStatBeginDate else
+		guard var appStatBeginDateUnwrapped = beginDate else
 		{
 			print("Could not end AppStat statistics: no begin date")
 			return
 		}
 		
-		let appStats = AppDelegate.sharedDelegate().appStats()
+		let appStats = StatsManager.sortedStats(object: AppDelegate.shared.sharedAppStat)
 		let cal = NSCalendar.current
 		let endDate = Date()
 		let startOfDay = cal.startOfDay(for: endDate)
@@ -50,19 +73,97 @@ class StatsManager
 		appStats[0].minutes += Int16(minutes)
 		Task
 		{
-			await AppDelegate.sharedDelegate().saveContext()
+			await AppDelegate.shared.saveContext()
 		}
 		
-		appStatBeginDate = nil
+		beginDate = nil
 	}
 	
-	func beginStudyStat(studySet: StudySet)
+	class func dayFillSet(context: NSManagedObjectContext, count: Int, beginDate: Date) -> NSSet
 	{
+		let buildSet = NSMutableSet(capacity: count)
+		var dayBegin = beginDate
+		let cal = NSCalendar.current
+		for _ in 0..<count
+		{
+			let dayStat = DayStat(context: context)
+			dayStat.day = dayBegin
+			dayStat.minutes = 0
+//			dayStat.minutes = Int16.random(in: 0...60)
+			buildSet.add(dayStat)
+			
+			guard let nextDay = cal.date(byAdding: .day, value: -1, to: dayBegin) else
+			{
+				print("Could not add 1 to dayBegin")
+				return NSSet()
+			}
+			dayBegin = nextDay
+		}
 		
+		return buildSet
 	}
 	
-	func endStudyStat(studySet: StudySet)
+	// Returns a sorted array of the appstats
+	static func sortedStats(object:StatsDataObject) -> [DayStat]
 	{
-		
+		let cal = NSCalendar.current
+		var dayBegin = cal.startOfDay(for: Date())
+		object.addToStats(StatsManager.dayFillSet(context: object.managedObjectContext!,
+												count: max(0, 7-object.stats.count),
+												beginDate: dayBegin))
+
+		let dateSortDesc = NSSortDescriptor(key: "day", ascending: false)
+		var statsSorted = object.stats.sortedArray(using: [dateSortDesc]) as! [DayStat]
+		let removedObjects = NSMutableSet()
+
+		guard let dayWeekBefore = cal.date(byAdding: .day, value: -7, to: dayBegin) else
+		{
+			print("Could not subtract 7 days")
+			return []
+		}
+		dayBegin = dayWeekBefore
+
+		for i in stride(from: object.stats.count-1, to: 0, by: -1)
+		{
+			if (statsSorted[i].day < dayBegin)
+			{
+				print("removed \(statsSorted[i].day)")
+				removedObjects.add(statsSorted.last!)
+				statsSorted.removeLast()
+			}
+		}
+
+		let lastDay = statsSorted.last?.day
+		if (lastDay == nil)
+		{
+			dayBegin = cal.startOfDay(for: Date())
+		}
+		else
+		{
+			dayBegin = lastDay!
+		}
+
+		object.addToStats(StatsManager.dayFillSet(context: object.managedObjectContext!,
+												count: max(0, 7-object.stats.count),
+												beginDate: dayBegin))
+
+		if (removedObjects.count > 0)
+		{
+			object.removeFromStats(removedObjects)
+			Task
+			{
+				await AppDelegate.shared.saveContext()
+			}
+		}
+
+		return statsSorted
 	}
+}
+
+protocol StatsDataObject: NSManagedObject
+{
+	func addToStats(_ values: NSSet)
+	func removeFromStats(_ values: NSSet)
+	
+	var stats: NSSet { get }
 }

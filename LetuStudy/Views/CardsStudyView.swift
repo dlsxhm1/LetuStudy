@@ -10,8 +10,7 @@ import CoreData
 
 struct CardsStudyView : View
 {
-//	@Environment(\.scenePhase) var scenePhase1
-	
+	private var studySet: StudySet
 	private let cardWidth : CGFloat = 300
 	private let cardHeight : CGFloat = 250
 	private let cardAnimationDuration : CGFloat = 0.15
@@ -21,10 +20,11 @@ struct CardsStudyView : View
 	@State private var isFlipped = false
 	@State private var studyingIndex = 0
 
-	@State public var studyPoints : [StudyPoint]
+	@State private var studyPoints : [StudyPoint]
 	
 	init(studySet: StudySet)
 	{
+		self.studySet = studySet
 		self.studyPoints = studySet.points.array as! [StudyPoint]
 	}
 	
@@ -101,24 +101,13 @@ struct CardsStudyView : View
 			}
 			.padding()
 		}
-//		.onChange(of: scenePhase, perform:
-//		{ newPhase in
-//			if (newPhase == .active)
-//			{
-//				StatsManager.shared.beginAppStat()
-//			}
-//			else if (newPhase == .inactive)
-//			{
-//				StatsManager.shared.endAppStat()
-//			}
-//		})
 		.onAppear()
 		{
-			StatsManager.shared.beginAppStat()
+			StatsManager.shared.beginStudyStat(studySet: self.studySet)
 		}
 		.onDisappear()
 		{
-			StatsManager.shared.endAppStat()
+			StatsManager.shared.endStudyStat()
 		}
 		)
 	}

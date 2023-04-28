@@ -23,17 +23,6 @@ struct StudyCount: Identifiable
 	}
 }
 
-//let currentWeek: [StudyCount] = [
-//	StudyCount(day: "20230201", studyMinutes: 42),
-//	StudyCount(day: "20230202", studyMinutes: 65),
-//	StudyCount(day: "20230203", studyMinutes: 48),
-//	StudyCount(day: "20230204", studyMinutes: 67),
-//	StudyCount(day: "20230205", studyMinutes: 64),
-//	StudyCount(day: "20230206", studyMinutes: 104),
-//	StudyCount(day: "20230207", studyMinutes: 40)
-//]
-
-
 struct StatsView: View
 {
 	@State var totalMinutes = [StudyCount]()
@@ -70,6 +59,10 @@ struct StatsView: View
 							await fetchTotalMinutes()
 						}
 					}
+					
+					Divider()
+					
+					
 //					GroupBox ( "Bar Chart - Study Minutes") {
 //						Chart(currentWeek) {
 //							LineMark(
@@ -114,12 +107,12 @@ struct StatsView: View
 			}
 			.navigationTitle("Statistics")
 		}
-		
     }
 	
 	func fetchTotalMinutes() async
 	{
-		let sortedStats = await (UIApplication.shared.delegate as! AppDelegate).appStats()
+		let appStat = await (UIApplication.shared.delegate as! AppDelegate).sharedAppStat
+		let sortedStats = StatsManager.sortedStats(object: appStat)
 		totalMinutes = [StudyCount]()
 		for stat in sortedStats
 		{

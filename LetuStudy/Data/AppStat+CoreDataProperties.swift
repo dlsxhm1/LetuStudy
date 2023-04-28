@@ -21,7 +21,7 @@ extension AppStat
 }
 
 // MARK: Generated accessors for stats
-extension AppStat
+extension AppStat: StatsDataObject
 {
     @objc(addStatsObject:)
     @NSManaged public func addToStats(_ value: DayStat)

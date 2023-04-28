@@ -43,7 +43,7 @@ struct SetsView: View
 					
 					Task
 					{
-						await AppDelegate.sharedDelegate().saveContext()
+						await AppDelegate.shared.saveContext()
 					}
 				}
 			}
@@ -124,7 +124,7 @@ struct SetsView: View
 		
 		Task
 		{
-			await AppDelegate.sharedDelegate().saveContext()
+			await AppDelegate.shared.saveContext()
 		}
 	}
 }

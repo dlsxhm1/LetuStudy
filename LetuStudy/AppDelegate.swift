@@ -13,6 +13,46 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
+	public lazy var sharedAppStat: AppStat =
+	{
+		let appStatFetchRequest = AppStat.fetchRequest()
+		var fetchResult: [AppStat]?
+		
+		self.persistentContainer.viewContext.performAndWait
+		{
+			do
+			{
+				fetchResult = try self.persistentContainer.viewContext.fetch(appStatFetchRequest)
+			}
+			catch
+			{
+				print("Error fetching 'AppStat': \(error)")
+			}
+		}
+
+		let appStatOptional = fetchResult?.first
+		let appStat: AppStat
+		if (appStatOptional == nil)
+		{
+			// add new AppStat
+			appStat = AppStat(context: self.persistentContainer.viewContext)
+			Task
+			{
+				await self.saveContext()
+			}
+		}
+		else
+		{
+			appStat = appStatOptional!
+		}
+		
+		return appStat
+	}()
+	
+	static let shared: AppDelegate =
+	{
+		return UIApplication.shared.delegate as! AppDelegate
+	}()
 	
 	lazy var persistentContainer: NSPersistentContainer =
 	{
@@ -41,11 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 			}
 		}
 	}
-	
-	class func sharedDelegate() -> AppDelegate
-	{
-		return UIApplication.shared.delegate as! AppDelegate
-	}
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
 	{
@@ -65,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 //		set.lastOpened = Date()
 		
 		// add AppStat singleton
-		_ = appStats()
+		_ = sharedAppStat
 //		let appStat = AppStat(context: self.persistentContainer.viewContext)
 //		let someDayStat = DayStat(context: self.persistentContainer.viewContext)
 //		someDayStat.minutes = 37
@@ -74,136 +109,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		
         return true
     }
-	
-	// Creates the AppStat object in the coredata stack if it doesn't exist. Checks to make sure
-	// that appStat.stats contains 7 objects for the previous seven days as well, and adds/removes
-	// objects when applicable.
-	// Returns a sorted array of the global application stats data
-	func appStats() -> [DayStat]
-	{
-		let appStatFetchRequest = AppStat.fetchRequest()
-		var fetchResult: [AppStat]?
-		
-		self.persistentContainer.viewContext.performAndWait
-		{
-			do
-			{
-				fetchResult = try self.persistentContainer.viewContext.fetch(appStatFetchRequest)
-			}
-			catch
-			{
-				print("Error fetching 'AppStat': \(error)")
-			}
-		}
-
-		let appStatOptional = fetchResult?.first
-		let appStat: AppStat
-		if (appStatOptional == nil)
-		{
-			// add new AppStat
-			appStat = AppStat(context: self.persistentContainer.viewContext)
-		}
-		else
-		{
-			appStat = appStatOptional!
-		}
-		
-//		self.persistentContainer.viewContext.delete(appStat)
-//		return []
-		
-		let statsSet = appStat.stats
-		let cal = NSCalendar.current
-		var dayBegin = cal.startOfDay(for: Date())
-		fillDays(appStat: appStat, count: max(0, 7-statsSet.count), beginDate: dayBegin)
-		
-		let dateSortDesc = NSSortDescriptor(key: "day", ascending: false)
-		var statsSorted = statsSet.sortedArray(using: [dateSortDesc]) as! [DayStat]
-		var removedObjects : [DayStat] = []
-		
-		guard let dayWeekBefore = cal.date(byAdding: .day, value: -7, to: dayBegin) else
-		{
-			print("Could not subtract 7 days")
-			return []
-		}
-		dayBegin = dayWeekBefore
-		
-		for i in stride(from: statsSet.count-1, to: 0, by: -1)
-		{
-			if (statsSorted[i].day < dayBegin)
-			{
-				print("removed \(statsSorted[i].day)")
-				removedObjects.append(statsSorted.last!)
-				statsSorted.removeLast()
-			}
-		}
-		
-		let lastDay = statsSorted.last?.day
-		if (lastDay == nil)
-		{
-			dayBegin = cal.startOfDay(for: Date())
-		}
-		else
-		{
-			dayBegin = lastDay!
-		}
-		
-		fillDays(appStat: appStat, count: max(0, 7-statsSet.count), beginDate: dayBegin)
-		
-		// add and save changes to context
-		for toRemove in removedObjects
-		{
-			self.persistentContainer.viewContext.delete(toRemove)
-		}
-		Task
-		{
-			await self.saveContext()
-		}
-		
-		return statsSorted
-	}
-	
-	private func fillDays(appStat: AppStat, count: Int, beginDate: Date)
-	{
-		var dayBegin = beginDate
-		let cal = NSCalendar.current
-		for _ in 0..<count
-		{
-			let dayStat = DayStat(context: self.persistentContainer.viewContext)
-			dayStat.day = dayBegin
-			dayStat.minutes = 0
-//			dayStat.minutes = Int16.random(in: 0...60)
-			appStat.addToStats(dayStat)
-			
-			guard let nextDay = cal.date(byAdding: .day, value: -1, to: dayBegin) else
-			{
-				print("Could not add 1 to dayBegin")
-				return
-			}
-			dayBegin = nextDay
-		}
-	}
-	
-//	private func fillDays(studySet: StudySet, count: Int, beginDate: Date)
-//	{
-//		var dayBegin = beginDate
-//		let cal = NSCalendar.current
-//		for _ in 0..<count
-//		{
-//			let dayStat = DayStat(context: self.persistentContainer.viewContext)
-//			dayStat.day = dayBegin
-////			dayStat.minutes = 0
-//			dayStat.minutes = Int16.random(in: 0...60)
-//			studySet.addToStats(dayStat)
-//
-//			guard let nextDay = cal.date(byAdding: .day, value: -1, to: dayBegin) else
-//			{
-//				print("Could not add 1 to dayBegin")
-//				return
-//			}
-//			dayBegin = nextDay
-//		}
-//	}
-
 
 //    func applicationDidEnterBackground(_ application: UIApplication)
 //	{
@@ -222,6 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     func applicationDidBecomeActive(_ application: UIApplication)
 	{
+		StatsManager.shared.beginAppStat()
     }
 }
 

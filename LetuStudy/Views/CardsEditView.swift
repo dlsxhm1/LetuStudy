@@ -105,7 +105,7 @@ struct CardsEditView : View
 		{
 			Task
 			{
-				await AppDelegate.sharedDelegate().saveContext()
+				await AppDelegate.shared.saveContext()
 			}
 		}
 	}
