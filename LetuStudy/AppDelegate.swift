@@ -129,5 +129,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 	{
 		StatsManager.shared.beginAppStat()
     }
+	
+	func resetPersistentStore() -> Bool
+	{
+		guard let url = persistentContainer.persistentStoreDescriptions.first?.url else { return false }
+		
+		let persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
+
+		 do
+		 {
+			 try persistentStoreCoordinator.destroyPersistentStore(at:url, ofType: NSSQLiteStoreType, options: nil)
+//			 try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+		 }
+		catch
+		{
+			print("Attempted to clear persistent store: " + error.localizedDescription)
+			return false
+		}
+		
+		return true
+	}
 }
 
+public extension UIWindow
+{
+	override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?)
+	{
+		if motion == .motionShake
+		{
+			// on shake, reset persistant store
+			let result = AppDelegate.shared.resetPersistentStore()
+			let message: String
+			if (result)
+			{
+				message = "Core Data store successfully reset. Restart app to create a new store."
+			}
+			else
+			{
+				message = "Core Data store reset unsuccessful. Restart app to recover."
+			}
+			
+			let resetAlert = UIAlertController(title: "Reset Core Data Store", message: message, preferredStyle: .alert)
+			UIApplication.shared.keyWindow?.rootViewController?.present(resetAlert, animated: true)
+		}
+		super.motionEnded(motion, with: event)
+	}
+}
