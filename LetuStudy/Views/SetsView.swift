@@ -111,8 +111,8 @@ struct SetsView: View
 		if timerVal > 0
 		{
 			let content = UNMutableNotificationContent()
-			content.title = "Time is up!"
-			content.body = "Your \(timerVal) minute timer has expired."
+			content.title = "Time to study!"
+			content.body = "Its time to start studying with LetuStudy!"
 			let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timerVal * 6), repeats: false)
 			let request = UNNotificationRequest(identifier: "timer", content: content, trigger: trigger)
 			UNUserNotificationCenter.current().add(request)
