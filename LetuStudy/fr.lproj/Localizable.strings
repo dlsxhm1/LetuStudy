@@ -5,8 +5,8 @@
   Created by Haoming Xu on 4/5/23.
   
 */
-
 //ContentView.swift
+
 "Home" = "Accueil";
 "Study Cards" = "Cartes d'Étude";
 "Statistics" = "Statistiques";
@@ -50,6 +50,3 @@
 "Username" = "Nom d'Utilisateur";
 "Password" = "Mot de Passe";
 "Sign In" = "Se Connecter";
-
-"Add" = "Add";
-

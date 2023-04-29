@@ -5,8 +5,8 @@
   Created by Haoming Xu on 4/5/23.
   
 */
-
 //ContentView.swift
+
 "Home" = "Үндсэн Цэс";
 "Study Cards" = "Суралцах Цэс";
 "Statistics" = "Статистик";
@@ -47,6 +47,6 @@
 "VoiceOver" = "ДууОруулга";
 
 //LoginView.swift
-"Name" = "Нэр";
+"Username" = "Username";
 "Password" = "Нууц Үг";
 "Sign In" = "Нэвтрэх";

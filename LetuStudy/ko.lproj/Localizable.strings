@@ -5,9 +5,9 @@
   Created by Haoming Xu on 4/5/23.
   
 */
-
 //ContentView.swift
-"home" = "홈";
+
+"Home" = "Home";
 "Study Cards" = "학습 카드";
 "Statistics" = "통계";
 "Settings" = "설정";

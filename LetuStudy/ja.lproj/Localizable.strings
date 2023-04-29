@@ -5,8 +5,8 @@
   Created by Haoming Xu on 4/5/23.
   
 */
-
 //ContentView.swift
+
 "Home" = "ホーム";
 "Study Cards" = "学習カード";
 "Statistics" = "統計情報";
