@@ -1,0 +1,6 @@
+targets:
+  - name: LetuStudy
+    sources:
+      - /LetuStudy/en.lproj/*.strings
+    file: /LetuStudy/%two_letters_code%.lproj/%original_file_name%
+    format: macosx
