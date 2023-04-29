@@ -26,6 +26,29 @@ A comperhensive study app designed in Software Engineering I course. Providing S
 | Secondary Color | ![#dfb757](https://via.placeholder.com/10/dfb757?text=+) #dfb757 |
 | Outline Color | ![#a8aaaf](https://via.placeholder.com/10/a8aaaf?text=+) #a8aaaf |
 
+## Screenshots
+<p float="left">
+<img src="/Documents/Screenshots/LaunchScreen.png" alt="Launchscreen" width="300">
+<img src="/Documents/Screenshots/LaunchScreen_Dark.png" alt="LaunchscreenDark" width="300">
+</p>
+<figcaption align = "center"><b>Screenshot 1 & 2</b> - Launch Screen in Light and Dark mode</figcaption>
+
+<br></br>
+
+<p float="left">
+<img src="/Documents/Screenshots/StudySet1.png" alt="Study Set 1" width="300">
+<img src="/Documents/Screenshots/StudySet2.png" alt="Study Set 2" width="300">
+<img src="/Documents/Screenshots/Statistics.png" alt="Study Set 2" width="300">
+</p>
+<figcaption align = "center"><b>Screenshot 3, 4 & 5</b> - StudySets View and Statistics View</figcaption>
+
+<br></br>
+
+<p float="left">
+<img src="/Documents/Screenshots/Notification2.png" alt="Alert" width="300">
+<img src="/Documents/Screenshots/Notification1.png" alt="Push Notification" width="600" >
+</p>
+<figcaption align = "center"><b>Screenshot 6 & 7</b> - Alert in foreground, Push Notification in background</figcaption>
 
 ## Documentation
 
