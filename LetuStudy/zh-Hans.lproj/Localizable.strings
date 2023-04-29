@@ -5,8 +5,8 @@
   Created by Haoming Xu on 4/5/23.
   
 */
-
 //ContentView.swift
+
 "Home" = "主页";
 "Study Cards" = "学习卡片";
 "Statistics" = "数据";
