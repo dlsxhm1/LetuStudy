@@ -5,8 +5,8 @@
   Created by Haoming Xu on 4/5/23.
   
 */
-
 //ContentView.swift
+
 "Home" = "Inicio";
 "Study Cards" = "Tarjetas de Estudio";
 "Statistics" = "Estadísticas";
