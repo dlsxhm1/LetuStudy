@@ -5,8 +5,8 @@
   Created by Haoming Xu on 4/5/23.
   
 */
-
 //ContentView.swift
+
 "Home" = "主頁";
 "Study Cards" = "學習卡片";
 "Statistics" = "統計數據";
@@ -21,11 +21,11 @@
 "Next" = "下一個";
 "Previous" = "上一個";
 
-"Term" = "詞彙";
-"Definition" = "定義";
+"Term" = "词条";
+"Definition" = "定义";
 "Done" = "完成";
-"Edit" = "編輯";
-"Total Studying" = "總學習時間";
+"Edit" = "编辑";
+"Total Studying" = "总学习时长";
 
 //SettingsView.swift
 "Notifications settings" = "通知設置";
@@ -50,10 +50,3 @@
 "Username" = "用戶名";
 "Password" = "密碼";
 "Sign In" = "登錄";
-
-"Add" = "添加";
-"Term" = "词条";
-"Definition" = "定义";
-"Done" = "完成";
-"Edit" = "编辑";
-"Total Studying" = "总学习时长";
