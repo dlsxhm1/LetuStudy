@@ -4,3 +4,6 @@ targets:
       - /LetuStudy/en.lproj/*.strings
     file: /LetuStudy/%two_letters_code%.lproj/%original_file_name%
     format: macosx
+files:
+  - source: /LetuStudy/en.lproj/Localizable.strings
+    translation: /LetuStudy/%osx_code%/Localizable.strings
